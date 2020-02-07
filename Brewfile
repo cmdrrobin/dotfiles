@@ -3,6 +3,7 @@ tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 
 # Tools
+brew 'zsh'
 brew 'gnupg'
 brew 'gopass'
 brew 'pinetry'
@@ -11,6 +12,7 @@ brew 'watch'
 brew 'node'
 brew 'tmux'
 brew 'python'
+brew 'php'
 
 # Hashistack
 brew 'terraform'

@@ -1,0 +1,22 @@
+{
+    "workbench.startupEditor": "newUntitledFile",
+    "window.zoomLevel": 0,
+    "editor.fontSize": 17,
+    "editor.rulers": [80],
+    "editor.minimap.enabled": false,
+    "editor.wordWrapColumn": 100,
+    "editor.wordWrap": "wordWrapColumn",
+    "workbench.colorTheme": "Nord Operator Theme",
+    "workbench.colorCustomizations": {
+        "editorRuler.foreground": "#333"
+    },
+    "editor.tabSize": 2,
+    "editor.fontFamily": "Dank Mono, Fira Code, Menlo, Monaco, 'Courier New', monospace",
+    "git.confirmSync": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "autoAlign.associations": {
+        "csv": ",",
+        "bsv": "|",
+        "tf": "="
+    }
+}
