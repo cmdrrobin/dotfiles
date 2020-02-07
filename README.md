@@ -25,4 +25,3 @@ For my the perfect shell to use.
 
 The perfect terminal for MacOS. Although they should have chosen a different name.
 
-# vim:set ft=markdown tw=80 ts=2 sw=2
