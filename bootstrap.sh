@@ -27,7 +27,7 @@ if [ $(uname) == "Darwin" ]; then
 
   # Copy settings of Visual Studio Code
   mkdir -p $HOME/.vscode
-  cp .vscode/settings.json $HOME/.vscode
+  cp vscode/settings.json $HOME/.vscode
 
   # Pre-download Nord theme for iTerm2
   curl -sL https://raw.githubusercontent.com/arcticicestudio/nord-iterm2/develop/src/xml/Nord.itermcolors \

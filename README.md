@@ -16,7 +16,7 @@ The Operator Mono font is too expensive for my usage, but Dank Mono comes as
 a good alternative and is much cheaper.
 
 ### Oh-my-zsh: The perfect shell
-[Oh-my-zsh](https://ohmyzsh.sh)
+[Oh-my-zsh](https://ohmyz.sh/)
 
 For my the perfect shell to use.
 
