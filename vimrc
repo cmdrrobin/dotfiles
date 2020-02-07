@@ -3,7 +3,9 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'hashivim/vim-hashicorp-tools'
+Plug 'hashivim/vim-terraform'
 Plug 'junegunn/vim-easy-align'
+Plug 'godlygeek/tabular'
 call plug#end()
 
 colorscheme nord
@@ -65,6 +67,13 @@ let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_working_path_mode = ''
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$' "default ignores
 let g:ctrlp_by_filename = '1'                       "only look for filenames
+
+" Allow vim-terraform to align settings automatically with Tabularize.
+let g:terraform_align=1
+
+" Allow vim-terraform to automatically format *.tf and *.tfvars files with
+" terraform fmt
+let g:terraform_fmt_on_save=1
 
 :nmap \l :setlocal number!<CR>
 :nmap \o :set paste!<CR>
