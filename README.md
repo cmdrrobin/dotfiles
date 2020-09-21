@@ -4,7 +4,7 @@ This is my personal dotfiles repo. You may use it or get inspired by it.
 
 ```bash
 curl -sfL https://git.io/chezmoi | sh
-chezmoi init https://github.com/TheLastProject/dotfiles.git
+chezmoi init https://github.com/rgruyters/dotfiles.git
 chezmoi apply
 ```
 
