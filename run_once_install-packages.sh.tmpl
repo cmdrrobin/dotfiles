@@ -1,0 +1,33 @@
+#!/bin/sh
+
+{{ if eq .chezmoi.os "darwin" -}}
+if [ ! -f "/usr/local/bin/brew" ]; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+fi
+
+brew tap federico-terzi/espanso || true
+brew install espanso tmux progress terraform consul \
+  vault gopass kubectl helm tmux gitmoji fzf the_silver_searcher || true
+
+{{ else if eq .chezmoi.os "linux" -}}
+{{ if eq .chezmoi.osRelease.id "ubuntu" -}}
+sudo apt-get update && sudo apt-get install -y apt-transport-https gnupg2
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
+
+echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+
+sudo apt-get update
+sudo apt install -y tmux fzf neovim python3 zsh kubectl helm silversearcher-ag
+{{ end -}}
+
+{{ end -}}
+
+if [ "$SHELL" != "$(which zsh)" ]; then
+  chsh -s $(which zsh)
+fi
+
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || true
+tmux source ~/.tmux.conf
+~/.tmux/plugins/tpm/bin/install_plugins all || true
