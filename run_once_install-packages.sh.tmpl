@@ -5,9 +5,63 @@ if [ ! -f "/usr/local/bin/brew" ]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
-brew tap federico-terzi/espanso || true
-brew install espanso tmux progress terraform consul \
-  vault gopass kubectl helm tmux gitmoji fzf the_silver_searcher || true
+brew tap homebrew/bundle || true
+
+cat > $HOME/.Brewfile <<EOF
+tap 'homebrew/cask'
+tap 'homebrew/cask-fonts'
+tap 'federico-terzi/espanso'
+
+brew 'zsh'
+brew 'neovim'
+brew 'gnupg'
+brew 'gopass'
+brew 'pinentry-mac'
+brew 'composer'
+brew 'watch'
+brew 'node'
+brew 'tmux'
+brew 'python'
+brew 'php'
+brew 'yubikey-personalization'
+brew 'hopenpgp-tools'
+brew 'ykman'
+brew 'espanso'
+brew 'gitmoji'
+brew 'the_silver_searcher'
+brew 'kubectl'
+brew 'helm'
+brew 'fzf'
+
+# Hashistack
+brew 'terraform'
+brew 'terraform-provisioner-ansible'
+brew 'vault'
+brew 'consul'
+brew 'consul-template'
+brew 'nomad'
+
+# Apps
+cask 'visual-studio-code'
+cask 'firefox'
+cask 'iterm2'
+cask 'brave'
+
+# Fonts
+cask 'font-open-sans'
+cask 'font-source-code-pro-for-powerline'
+cask 'font-source-code-pro'
+cask 'font-source-sans-pro'
+cask 'font-source-serif-pro'
+cask 'font-fira-code'
+cask 'font-powerline-symbols'
+EOF
+
+brew bundle --global
+
+# Pre-download Nord theme for iTerm2
+curl -sL https://raw.githubusercontent.com/arcticicestudio/nord-iterm2/develop/src/xml/Nord.itermcolors \
+  -o $HOME/Downloads/Nord.itermcolors
 
 {{ else if eq .chezmoi.os "linux" -}}
 {{ if eq .chezmoi.osRelease.id "ubuntu" -}}
