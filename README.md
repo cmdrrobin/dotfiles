@@ -16,7 +16,7 @@ chezmoi apply
 My preferred color/theme for almost everything.
 
 ### Dank Mono: The rather special coding font
-[Dank Mono](https://dank.sh/)
+[Dank Mono](https://gumroad.com/l/dank-mono)
 
 The Operator Mono font is too expensive for my usage, but Dank Mono comes as
 a good alternative and is much cheaper.
