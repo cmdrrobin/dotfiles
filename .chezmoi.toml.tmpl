@@ -1,3 +1,8 @@
 {{- $git_email := promptString "email for git" -}}
+{{- $workspace := promptString "work space" -}}
+
 [data]
-    git_email = "{{ $git_email }}"
+    workspace = "{{ $workspace }}"
+
+[data.git]
+    email = "{{ $git_email" }}"
