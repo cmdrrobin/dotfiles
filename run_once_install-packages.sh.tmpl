@@ -11,6 +11,7 @@ cat > $HOME/.Brewfile <<EOF
 tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 tap 'federico-terzi/espanso'
+tap 'hashicorp/tap'
 
 brew 'zsh'
 brew 'neovim'
@@ -34,18 +35,18 @@ brew 'helm'
 brew 'fzf'
 
 # Hashistack
-brew 'terraform'
+brew 'hashicorp/tap/terraform'
+brew 'hashicorp/tap/vault'
+brew 'hashicorp/tap/consul'
+brew 'hashicorp/tap/nomad'
 brew 'terraform-provisioner-ansible'
-brew 'vault'
-brew 'consul'
 brew 'consul-template'
-brew 'nomad'
 
 # Apps
 cask 'visual-studio-code'
 cask 'firefox'
 cask 'iterm2'
-cask 'brave'
+cask 'brave-browser'
 
 # Fonts
 cask 'font-open-sans'
@@ -54,6 +55,7 @@ cask 'font-source-code-pro'
 cask 'font-source-sans-pro'
 cask 'font-source-serif-pro'
 cask 'font-fira-code'
+cask 'font-fira-code-nerd-font'
 cask 'font-powerline-symbols'
 EOF
 
@@ -82,6 +84,8 @@ if [ "$SHELL" != "$(which zsh)" ]; then
   chsh -s $(which zsh)
 fi
 
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || true
-tmux source ~/.tmux.conf
-~/.tmux/plugins/tpm/bin/install_plugins all || true
+if [ ! -d "~/.tmux/plugins/tpm" ]; then
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || true
+  tmux source ~/.tmux.conf
+  ~/.tmux/plugins/tpm/bin/install_plugins all || true
+fi
