@@ -1,7 +1,3 @@
-if (has('termguicolors'))
-  set termguicolors
-endif
-
 colorscheme nord
 
 set nocompatible          "use Vim settings, rather than Vi
