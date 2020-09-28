@@ -144,4 +144,6 @@ let g:coc_global_extensions = [
   \ 'coc-pairs',
   \ 'coc-tsserver',
   \ 'coc-prettier',
+  \ 'coc-vimlsp',
+  \ 'coc-python',
   \ ]
