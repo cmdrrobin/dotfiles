@@ -7,7 +7,6 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/autoload/plugged')
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'itchyny/lightline.vim'
   Plug 'arcticicestudio/nord-vim'
   Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -19,8 +18,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'tpope/vim-sleuth' "Indent detection
   Plug 'scrooloose/nerdcommenter'
   Plug 'airblade/vim-gitgutter'
-  Plug 'yggdroot/indentline'
 {{- if ne .workspace "server" }}
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'ryanoasis/vim-devicons'
+  Plug 'yggdroot/indentline'
 {{ end -}}
 call plug#end()
