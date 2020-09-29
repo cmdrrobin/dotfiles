@@ -8,8 +8,8 @@ endif
 
 call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'itchyny/lightline.vim'
   Plug 'arcticicestudio/nord-vim'
-  Plug 'vim-airline/vim-airline'
   Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
   Plug 'ryanoasis/vim-devicons'
   Plug 'junegunn/vim-easy-align'
@@ -20,4 +20,5 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'tpope/vim-sleuth' "Indent detection
   Plug 'scrooloose/nerdcommenter'
   Plug 'airblade/vim-gitgutter'
+  Plug 'yggdroot/indentLine'
 call plug#end()
