@@ -68,7 +68,7 @@ curl -sL https://raw.githubusercontent.com/arcticicestudio/nord-iterm2/develop/s
 {{ else if eq .chezmoi.os "linux" -}}
 {{ if eq .chezmoi.osRelease.id "ubuntu" -}}
 
-{{ if ne .chezmoi.workspace "work" -}}
+{{ if ne .workspace "server" -}}
 sudo apt-get update && sudo apt-get install -y apt-transport-https gnupg2
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
@@ -76,20 +76,20 @@ curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
 echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
 
-sudo apt-get update
-sudo apt install kubectl helm
-{{ end -}}
-
-sudo apt install -y tmux fzf neovim python3 zsh silversearcher-ag python3-neovim 
-{{ end -}}
-
 # Install Nodejs (LTS)
 curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-sudo apt-get install -y nodejs
+
+sudo apt-get update
+sudo apt-get install -y nodejs kubectl helm
 
 mkdir -p ~/.local/share/fonts
 curl -fLo "Fira Code Retina Nerd Font Complete.ttf" \
   https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Retina/complete/Fira%20Code%20Retina%20Nerd%20Font%20Complete.ttf
+{{ end -}}
+
+sudo apt install -y tmux fzf neovim python3 zsh silversearcher-ag python3-neovim
+{{ end -}}
+
 {{ end -}}
 
 if [ "$SHELL" != "$(which zsh)" ]; then
