@@ -18,9 +18,11 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'tpope/vim-sleuth' "Indent detection
   Plug 'scrooloose/nerdcommenter'
   Plug 'airblade/vim-gitgutter'
+  Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 {{- if ne .workspace "server" }}
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'ryanoasis/vim-devicons'
   Plug 'yggdroot/indentline'
+  Plug 'rodjek/vim-puppet'
 {{- end }}
 call plug#end()
