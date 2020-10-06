@@ -7,22 +7,19 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/autoload/plugged')
-  Plug 'itchyny/lightline.vim'
-  Plug 'arcticicestudio/nord-vim'
-  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-  Plug 'junegunn/vim-easy-align'
-  Plug 'godlygeek/tabular'
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'junegunn/fzf.vim' "Fuzzy file finder vim extras
-  Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files
-  Plug 'tpope/vim-sleuth' "Indent detection
-  Plug 'scrooloose/nerdcommenter'
-  Plug 'airblade/vim-gitgutter'
-  Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+  Plug 'arcticicestudio/nord-vim'                        " Theme colours
+  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' } " File Management
+  Plug 'godlygeek/tabular'                               " Alignment
+  Plug 'ctrlpvim/ctrlp.vim'                              " fuzzy find files
+  Plug 'tpope/vim-sleuth'                                " Indent detection
+  Plug 'scrooloose/nerdcommenter'                        " Comments
+  Plug 'airblade/vim-gitgutter'                          " Git status
 {{- if ne .workspace "server" }}
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'ryanoasis/vim-devicons'
-  Plug 'yggdroot/indentline'
-  Plug 'rodjek/vim-puppet'
+  Plug 'vim-airline/vim-airline'                         " Statusline
+  Plug 'ryanoasis/vim-devicons'                          " Icons
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}        " Completion
+  Plug 'yggdroot/indentline'                             " Line guides
+{{- else }}
+  Plug 'itchyny/lightline.vim'                           " Light statusline
 {{- end }}
 call plug#end()
