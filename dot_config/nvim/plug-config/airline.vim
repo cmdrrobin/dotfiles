@@ -5,3 +5,6 @@ let g:airline#extensions#tabline#fnamemod = ':t' " show just the filename of buf
 let g:airline_detect_modified = 1
 let g:airline#extensions#bufferline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
+
+" We don't need to see things like -- INSERT -- anymore
+set noshowmode
