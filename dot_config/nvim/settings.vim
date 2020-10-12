@@ -27,7 +27,9 @@ set whichwrap=h,l,b,<,>,~,[,]  " List of flags specifying which commands wrap to
 set listchars+=space:·         " Add list of strings used for list mode
 
 "indent settings
+set shiftwidth=2               " Change the number of space characters inserted for indentation
 set tabstop=2                  " Insert 2 spaces for a tab
+set softtabstop=2              " Number of spaces for a tab
 set expandtab                  " Converts tabs to spaces
 set autoindent                 " Good auto indent
 set showtabline=2              " Always show tabs
