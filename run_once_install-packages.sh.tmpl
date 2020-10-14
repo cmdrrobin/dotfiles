@@ -44,11 +44,15 @@ echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt
 curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 
 sudo apt-get update
-sudo apt-get install -y nodejs kubectl helm
+sudo apt-get install -y nodejs kubectl helm gnupg rng-tools fonts-firacode powerline fonts-powerline python3-powerline
 
 mkdir -p ~/.local/share/fonts
-curl -fLo "Fira Code Retina Nerd Font Complete.ttf" \
+curl -fLo "$HOME/.local/share/fonts/Fira Code Retina Nerd Font Complete.ttf" \
   https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Retina/complete/Fira%20Code%20Retina%20Nerd%20Font%20Complete.ttf
+
+# Install Gopass
+curl -sLo /tmp/gopass_1.10.1_linux_amd64.deb https://github.com/gopasspw/gopass/releases/download/v1.10.1/gopass_1.10.1_linux_amd64.deb
+sudo dpkg -i /tmp/gopass_1.10.1_linux_amd64.deb
 {{ end -}}
 
 sudo apt install -y tmux fzf neovim python3 zsh silversearcher-ag python3-neovim
