@@ -36,15 +36,17 @@ curl -sL https://raw.githubusercontent.com/arcticicestudio/nord-iterm2/develop/s
 sudo apt-get update && sudo apt-get install -y apt-transport-https gnupg2
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
 
 echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 echo "deb https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
 
 # Install Nodejs (LTS)
 curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 
 sudo apt-get update
-sudo apt-get install -y nodejs kubectl helm gnupg rng-tools fonts-firacode powerline fonts-powerline python3-powerline
+sudo apt-get install -y nodejs kubectl helm gnupg rng-tools fonts-firacode powerline fonts-powerline python3-powerline consul vault nomad terraform boundary
 
 mkdir -p ~/.local/share/fonts
 curl -fLo "$HOME/.local/share/fonts/Fira Code Retina Nerd Font Complete.ttf" \
