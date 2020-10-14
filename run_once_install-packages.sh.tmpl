@@ -1,66 +1,29 @@
 #!/bin/sh
 
+[[ -d $HOME/.config/chezmoi/checksums ]] || mkdir -p $HOME/.config/chezmoi/checksums
+
 {{ if eq .chezmoi.os "darwin" -}}
+readonly checksum_brewfile="$HOME/.config/chezmoi/checksums/brewfile"
+
 if [ ! -f "/usr/local/bin/brew" ]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
-brew tap homebrew/bundle || true
+# Validate existing checksum for Brewfile
+if [[ -e "$checksum_brewfile" ]]; then
+  if [[ "$(shasum --algorithm 512256 --text "$HOME/.Brewfile" | sed 's/^\([a-z0-9]\{64\}\).*/\1/')" == "$(cat $checksum_brewfile)" ]]; then
+    exit 0
+  fi
+fi
 
-cat > $HOME/.Brewfile <<EOF
-tap 'homebrew/cask'
-tap 'homebrew/cask-fonts'
-tap 'federico-terzi/espanso'
-tap 'hashicorp/tap'
+# Start brewing...
+brew bundle install --global || true
 
-brew 'zsh'
-brew 'neovim'
-brew 'gnupg'
-brew 'gopass'
-brew 'pinentry-mac'
-brew 'composer'
-brew 'watch'
-brew 'node'
-brew 'tmux'
-brew 'python'
-brew 'php'
-brew 'yubikey-personalization'
-brew 'hopenpgp-tools'
-brew 'ykman'
-brew 'espanso'
-brew 'gitmoji'
-brew 'the_silver_searcher'
-brew 'kubectl'
-brew 'helm'
-brew 'fzf'
+# Remove stale or outdated downloads
+brew cleanup --prune 0 || true
 
-# Hashistack
-brew 'hashicorp/tap/terraform'
-brew 'hashicorp/tap/vault'
-brew 'hashicorp/tap/consul'
-brew 'hashicorp/tap/nomad'
-brew 'hashicorp/tap/terraform-ls'
-brew 'hashicorp/tap/consul-template'
-brew 'terraform-provisioner-ansible'
-
-# Apps
-cask 'visual-studio-code'
-cask 'firefox'
-cask 'iterm2'
-cask 'brave-browser'
-
-# Fonts
-cask 'font-open-sans'
-cask 'font-source-code-pro-for-powerline'
-cask 'font-source-code-pro'
-cask 'font-source-sans-pro'
-cask 'font-source-serif-pro'
-cask 'font-fira-code'
-cask 'font-fira-code-nerd-font'
-cask 'font-powerline-symbols'
-EOF
-
-brew bundle --global
+# Update checksum file
+shasum --algorithm 512256 --text "$HOME/.Brewfile" | sed 's/^\([a-z0-9]\{64\}\).*/\1/' > $checksum_brewfile || true
 
 # Pre-download Nord theme for iTerm2
 curl -sL https://raw.githubusercontent.com/arcticicestudio/nord-iterm2/develop/src/xml/Nord.itermcolors \
@@ -97,8 +60,8 @@ if [ "$SHELL" != "$(which zsh)" ]; then
   chsh -s $(which zsh)
 fi
 
-if [ ! -d "~/.tmux/plugins/tpm" ]; then
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm || true
+if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+  git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm || true
   tmux source ~/.tmux.conf
-  ~/.tmux/plugins/tpm/bin/install_plugins all || true
+  $HOME/.tmux/plugins/tpm/bin/install_plugins all || true
 fi
