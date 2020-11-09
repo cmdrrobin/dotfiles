@@ -33,6 +33,8 @@ set softtabstop=2              " Number of spaces for a tab
 set expandtab                  " Converts tabs to spaces
 set autoindent                 " Good auto indent
 set showtabline=2              " Always show tabs
+set smarttab                   " Makes tabbing smarter
+set smartindent                " Makes indeting smarter
 
 if exists("+colorcolumn")
     set colorcolumn=81         " Highlight columns 81 onwards
