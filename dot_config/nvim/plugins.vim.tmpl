@@ -13,10 +13,11 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'ctrlpvim/ctrlp.vim'                               " fuzzy find files
   Plug 'tpope/vim-sleuth'                                 " Indent detection
   Plug 'tpope/vim-commentary'                             " Comments
-  Plug 'airblade/vim-gitgutter'                           " Git status
+  " Plug 'airblade/vim-gitgutter'                           " Git status
   Plug 'tpope/vim-fugitive'                               " Git tool
   Plug 'rhysd/git-messenger.vim'                          " Reveal commit messages under the cursor
   Plug 'mhinz/vim-startify'                               " Startup screen
+  Plug 'Yggdroot/indentLine'                              " Indent lines marker
 {{- if ne .workspace "server" }}
   Plug 'vim-airline/vim-airline'                          " Statusline
   Plug 'ryanoasis/vim-devicons'                           " Icons
