@@ -61,13 +61,3 @@ sudo apt install -y tmux fzf neovim python3 zsh silversearcher-ag python3-neovim
 {{ end -}}
 
 {{ end -}}
-
-if [ "$SHELL" != "$(which zsh)" ]; then
-  chsh -s $(which zsh)
-fi
-
-if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
-  git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm || true
-  tmux source ~/.tmux.conf
-  $HOME/.tmux/plugins/tpm/bin/install_plugins all || true
-fi
