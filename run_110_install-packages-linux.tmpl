@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+## Package installer for Linux
+
+# Fail-safe :: Return value of a pipeline is the value of the last (rightmost) 
+# command to exit with a non-zero status, or zero if all commands in the 
+# pipeline exit successfully
+set -o pipefail
+
+# Fail-safe :: Treat unset variables and parameters other than the special 
+# parameters ‘@’ or ‘*’ as an error when performing parameter expansion.
+# An error message will be written to the standard error, and a
+# non-interactive shell will exit
+set -u
+
+# Naming
+readonly cr_script_sn='run_110_install-packages-linux'
+
+# State file definition
+readonly cr_state_success="$HOME/.config/chezmoi/state/$cr_script_sn"
+
+# Validate existence of state file
+if [ -e "$cr_state_success" -o $(uname -o) != "GNU/Linux" ]; then
+    # Action :: Graceful exit
+    exit 0
+fi
+
+{{ if ne .workspace "server" -}}
+# Install required packages for adding repo's
+sudo apt-get update && sudo apt-get install -y apt-transport-https \
+  gnupg2
+
+# Adding keys
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg |\
+  sudo apt-key add -
+curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+
+# Adding the required repo's
+echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" |\
+  sudo tee /etc/apt/sources.list.d/kubernetes.list
+echo "deb https://baltocdn.com/helm/stable/debian/ all main" |\
+  sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+
+sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+
+# Install packages
+sudo apt-get update
+sudo apt-get install -y nodejs kubectl helm gnupg rng-tools fonts-firacode \
+  powerline fonts-powerline python3-powerline consul vault nomad terraform \
+  boundary
+
+# Adding Nerd font
+mkdir -p ~/.local/share/fonts
+curl -fLo "$HOME/.local/share/fonts/Fira Code Retina Nerd Font Complete.ttf" \
+  https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Retina/complete/Fira%20Code%20Retina%20Nerd%20Font%20Complete.ttf
+
+# Install Gopass
+curl -sLo /tmp/gopass_1.10.1_linux_amd64.deb https://github.com/gopasspw/gopass/releases/download/v1.10.1/gopass_1.10.1_linux_amd64.deb
+sudo dpkg -i /tmp/gopass_1.10.1_linux_amd64.deb
+
+# Install Nodejs (LTS)
+curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+{{ end -}}
+
+# Install other packages
+sudo apt install -y tmux fzf neovim python3 zsh silversearcher-ag python3-neovim
+
+# Success
+touch "$cr_state_success" || {
+    # touch failure
+    printf '%s\n' "FAIL :: touch :: $cr_state_success :: $cr_script_sn/$LINENO"
+
+    # Exit ungracefully
+    exit 1
+}

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+
+set -u
+
+if [ -d "$HOME/.config/chezmoi/state" ]; then
+  exit 0
+fi
+
+mkdir -p $HOME/.config/chezmoi/state
