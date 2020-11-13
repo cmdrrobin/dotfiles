@@ -3,18 +3,10 @@
 
 # Source :: fzf :: Z shell :: Key bindings
 # shellcheck disable=SC1091
-{{ if eq .chezmoi.os "darwin" -}}
 source /usr/local/opt/fzf/shell/key-bindings.zsh
-{{ else -}}
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-{{ end -}}
 
 # Source :: fzf :: Z shell :: Completions
 # shellcheck disable=SC1091
-{{ if eq .chezmoi.os "darwin" -}}
 source /usr/local/opt/fzf/shell/completion.zsh
-{{ else -}}
-source /usr/share/doc/fzf/examples/completion.zsh
-{{ end -}}
 
 # vi: filetype=zsh
