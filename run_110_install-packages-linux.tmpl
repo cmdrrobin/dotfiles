@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 ## Package installer for Linux
 
+{{ if ne .chezmoi.os "linux" -}}
+exit 0
+{{ end -}}
 # Fail-safe :: Return value of a pipeline is the value of the last (rightmost) 
 # command to exit with a non-zero status, or zero if all commands in the 
 # pipeline exit successfully
@@ -19,7 +22,7 @@ readonly cr_script_sn='run_110_install-packages-linux'
 readonly cr_state_success="$HOME/.config/chezmoi/state/$cr_script_sn"
 
 # Validate existence of state file
-if [ -e "$cr_state_success" -o $(uname -o) != "GNU/Linux" ]; then
+if [ -e "$cr_state_success" ]; then
     # Action :: Graceful exit
     exit 0
 fi
