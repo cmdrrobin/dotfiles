@@ -22,6 +22,8 @@ brew 'the_silver_searcher'
 brew 'kubectl'
 brew 'helm'
 brew 'fzf'
+brew 'coreutils'
+brew 'openssl'
 
 # Hashistack
 brew 'hashicorp/tap/terraform'
