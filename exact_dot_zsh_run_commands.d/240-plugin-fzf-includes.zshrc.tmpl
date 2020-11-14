@@ -1,5 +1,7 @@
+{{ if ne .workspace "server" -}}
 #
 ## Plugin :: fzf :: Includes
+#
 
 # Source :: fzf :: Z shell :: Key bindings
 # shellcheck disable=SC1091
@@ -9,4 +11,5 @@ source /usr/local/opt/fzf/shell/key-bindings.zsh
 # shellcheck disable=SC1091
 source /usr/local/opt/fzf/shell/completion.zsh
 
+{{ end -}}
 # vi: filetype=zsh

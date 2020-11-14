@@ -1,2 +1,0 @@
-#
-eval `gopass completion zsh`
