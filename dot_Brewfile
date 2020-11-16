@@ -38,6 +38,8 @@ brew 'consul-template'
 cask 'firefox'
 cask 'iterm2'
 cask 'brave-browser'
+cask '1password'
+cask 'vmware-fusion'
 
 # Fonts
 cask 'font-source-code-pro'
