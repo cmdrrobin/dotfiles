@@ -21,8 +21,8 @@ My preferred color/theme for almost everything.
 The Operator Mono font is too expensive for my usage, but Dank Mono comes as
 a good alternative and is much cheaper.
 
-### Oh-my-zsh: The perfect shell
-[Oh-my-zsh](https://ohmyz.sh/)
+### Powerlevel10k: The perfect shell
+[Powerlevel10k](https://github.com/romkatv/powerlevel10k)
 
 For my the perfect shell to use.
 
