@@ -45,6 +45,7 @@
 
     # Set default indent of 2 spaces
     default_indent = 2
+    expand_tab = true
 
     autocomplete_method = "coc"
 
