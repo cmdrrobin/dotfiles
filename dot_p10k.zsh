@@ -71,7 +71,6 @@
     # time                    # current time
     # =========================[ Line #2 ]=========================
     newline                   # \n
-    battery                   # Battery level
   )
 
   # Basic style options that define the overall prompt look.
