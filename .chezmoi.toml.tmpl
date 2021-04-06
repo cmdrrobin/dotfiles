@@ -1,4 +1,5 @@
 {{- $git_email := promptString "email for git" -}}
+{{- $git_key := promptString "GPG signing key" -}}
 {{- $workspace := promptString "work space" -}}
 
 [data]
@@ -6,3 +7,4 @@
 
 [data.git]
     email = "{{ $git_email }}"
+    gpg_key = "{{ $gpg_key }}"

@@ -1,6 +1,11 @@
 [user]
 	name = Robin Gruyters
+  initials = rg
 	email = {{ .git.email }}
+  signingkey = {{ .git.gpg.key }}
+
+[grep]
+  line-number = true
 
 [gpg]
 	program = gpg
@@ -13,6 +18,7 @@
 
 [fetch]
   prune = true
+  pruneTags = true
 
 [diff]
   colorMoved = zebra
