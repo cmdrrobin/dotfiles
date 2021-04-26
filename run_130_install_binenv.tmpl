@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+#
+# Install Binenv: The last binary you'll ever install
+# https://github.com/devops-works/binenv
+
+# Fail-safe :: Return value of a pipeline is the value of the last (rightmost) 
+# command to exit with a non-zero status, or zero if all commands in the 
+# pipeline exit successfully
+set -o pipefail
+
+# Fail-safe :: Treat unset variables and parameters other than the special 
+# parameters ‘@’ or ‘*’ as an error when performing parameter expansion.
+# An error message will be written to the standard error, and a
+# non-interactive shell will exit
+set -u
+
+# Naming
+readonly cr_script_sn='run_130_install_binenv'
+
+# State file definition
+readonly cr_state_success="$HOME/.config/chezmoi/state/$cr_script_sn"
+
+# Validate existence of state file
+if [ -e "$cr_state_success" ]; then
+    # Action :: Graceful exit
+    exit 0
+fi
+
+if [ ! -x ${HOME}/.binenv/binenv ]; then
+  (curl -sLo /tmp/binenv https://github.com/devops-works/binenv/releases/download/v0.11.0/binenv_{{ .chezmoi.os }}_amd64) || {
+    # Curl failed
+    printf '%s\n' "FAIL :: curl ::  git.io/antibody :: /usr/local/bin :: $cr_script_sn/$LINENO"
+
+    # Exit ungracefully
+    exit 1
+  }
+
+  chmod +x /tmp/binenv
+  /tmp/binenv update
+  /tmp/binenv install binenv
+  rm /tmp/binenv
+fi
+
+# Success
+touch "$cr_state_success" || {
+    # touch failure
+    printf '%s\n' "FAIL :: touch :: $cr_state_success :: $cr_script_sn/$LINENO"
+
+    # Exit ungracefully
+    exit 1
+}

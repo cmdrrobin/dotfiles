@@ -26,13 +26,7 @@ brew 'coreutils'
 brew 'openssl'
 
 # Hashistack
-brew 'hashicorp/tap/terraform'
-brew 'hashicorp/tap/vault'
-brew 'hashicorp/tap/consul'
-brew 'hashicorp/tap/nomad'
-brew 'hashicorp/tap/boundary'
 brew 'hashicorp/tap/terraform-ls'
-brew 'consul-template'
 
 # Apps
 cask 'firefox'

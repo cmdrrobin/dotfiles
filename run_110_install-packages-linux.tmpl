@@ -29,28 +29,9 @@ fi
 
 {{ if ne .workspace "server" -}}
 # Install required packages for adding repo's
-sudo apt-get update && sudo apt-get install -y apt-transport-https \
-  gnupg2
-
-# Adding keys
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg |\
-  sudo apt-key add -
-curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
-curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-
-# Adding the required repo's
-echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" |\
-  sudo tee /etc/apt/sources.list.d/kubernetes.list
-echo "deb https://baltocdn.com/helm/stable/debian/ all main" |\
-  sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
-
-sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-
-# Install packages
-sudo apt-get update
-sudo apt-get install -y nodejs kubectl helm gnupg rng-tools fonts-firacode \
-  powerline fonts-powerline python3-powerline consul vault nomad terraform \
-  boundary
+sudo apt update -qq
+sudo apt install -y apt-transport-https gnupg2 rng-tools \
+  fonts-firacode powerline fonts-powerline python3-powerline
 
 # Adding Nerd font
 mkdir -p ~/.local/share/fonts
@@ -60,8 +41,8 @@ curl -sfLo "$HOME/.local/share/fonts/Fira Code Regular Nerd Font Complete.ttf" \
   https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/complete/Fira%20Code%20Regular%20Nerd%20Font%20Complete.ttf
 
 # Install Gopass
-curl -sLo /tmp/gopass_1.10.1_linux_amd64.deb https://github.com/gopasspw/gopass/releases/download/v1.10.1/gopass_1.10.1_linux_amd64.deb
-sudo dpkg -i /tmp/gopass_1.10.1_linux_amd64.deb
+curl -sLo /tmp/gopass_linux_amd64.deb https://github.com/gopasspw/gopass/releases/download/v1.12.5/gopass_1.12.5_linux_amd64.deb
+sudo dpkg -i /tmp/gopass_linux_amd64.deb
 
 # Install Nodejs (LTS)
 curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
