@@ -1,0 +1,9 @@
+enable-ssh-support
+ttyname $GPG_TTY
+default-cache-ttl 60
+max-cache-ttl 120
+{{ if eq .chezmoi.os "darwin" -}}
+pinentry-program /usr/local/bin/pinentry-mac
+{{ else }}
+pinentry-program /usr/local/bin/pinentry-gnome3
+{{ endif -}}
