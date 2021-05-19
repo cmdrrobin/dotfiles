@@ -76,10 +76,6 @@
     name = "git"
     git-plugin = "fugitive"
 
-# Improve incremental searching
-[[layers]]
-    name = "incsearch"
-
 # Vimscript language support, including code completion, syntax checking and buffer formatting
 [[layers]]
     name = "lang#vim"
@@ -108,6 +104,15 @@
 [[layers]]
     name = "ui"
     enable_sidebar = false
+
+# Add Terraform Language Server for Terraform files
+[[layers]]
+  name = "lsp"
+  filetypes = [
+    "tf"
+  ]
+  [layers.override_cmd]
+    tf = ["terraform-ls", "serve"]
 
 # https://github.com/pearofducks/ansible-vim :: Syntax highlighting Ansible common filetypes
 [[custom_plugins]]
