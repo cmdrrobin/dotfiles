@@ -105,7 +105,6 @@
     name = "ui"
     enable_sidebar = false
 
-# Add Terraform Language Server for Terraform files
 [[layers]]
   name = "lsp"
   filetypes = [
@@ -122,4 +121,12 @@
 # https://github.com/ryanoasis/vim-devicons :: Add file type icons to Vim plugins such as NERDTree, vim-airline, vim-startify, and many more
 [[custom_plugins]]
     name = "ryanoasis/vim-devicons"
+    merged = false
+
+[[custom_plugins]]
+    name = "prettier/vim-prettier"
+    merged = false
+
+[[custom_plugins]]
+    name = "nvim-treesitter/nvim-treesitter"
     merged = false
