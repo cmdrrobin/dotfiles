@@ -45,8 +45,8 @@ curl -sfLo "$HOME/.local/share/fonts/Fira Code Regular Nerd Font Complete.ttf" \
   https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/complete/Fira%20Code%20Regular%20Nerd%20Font%20Complete.ttf
 
 # Install Gopass
-GOPASS_LATEST_DL=$(curl -sL https://api.github.com/repos/gopasspw/gopass/releases | jq -r ".assets[] | select(.name | test(\"linux_amd64\")) | .browser_download_url")
-curl -sLo /tmp/gopass_linux_amd64.deb $GOPASS_LATEST_DL
+GOPASS_LATEST_DL=$(curl -sL https://api.github.com/repos/gopasspw/gopass/releases | jq -r ".assets[] | select(.name | test(\"{{ .chezmoi.os }}_{{ .chezmoi.arch }}\")) | .browser_download_url")
+curl -sLo /tmp/gopass_{{ .chezmoi.os }}_{{ .chezmoi.arch }}.deb $GOPASS_LATEST_DL
 sudo dpkg -i /tmp/gopass_linux_amd64.deb
 
 # Install Nodejs (LTS)
