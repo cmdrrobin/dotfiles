@@ -1,7 +1,11 @@
 {{ if ne .workspace "server" -}}
 # Setting the correct pyenv settings
 export PATH="/home/robin/.pyenv/bin:$PATH"
+eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 {{ end -}}
 # vi: filetype=zsh

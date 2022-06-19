@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-#
-# Install Binenv: The last binary you'll ever install
-# https://github.com/devops-works/binenv
+## Lunarvim installation script
 
 # Fail-safe :: Return value of a pipeline is the value of the last (rightmost) 
 # command to exit with a non-zero status, or zero if all commands in the 
@@ -15,7 +13,7 @@ set -o pipefail
 set -u
 
 # Naming
-readonly cr_script_sn='run_130_install_binenv'
+readonly cr_script_sn='run_270_lunarvim_installation'
 
 # State file definition
 readonly cr_state_success="$HOME/.config/chezmoi/state/$cr_script_sn"
@@ -26,20 +24,16 @@ if [ -e "$cr_state_success" ]; then
     exit 0
 fi
 
-if [ ! -x ${HOME}/.binenv/binenv ]; then
-  BINENV_LATEST_DL=$(curl -sL https://api.github.com/repos/devops-works/binenv/releases/latest | jq -r ".assets[] | select(.name | test(\"{{ .chezmoi.os }}\")) | .browser_download_url")
-  (curl -sLo /tmp/binenv $BINENV_LATEST_DL) || {
-    # Curl failed
-    printf '%s\n' "FAIL :: curl ::  git.io/antibody :: /usr/local/bin :: $cr_script_sn/$LINENO"
+# Existence directory
+if [[ ! -d "$HOME/.local/share/lunarvim" ]]; then
+    # Clone repository
+    bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh) -l -y --overwrite || {
+      # Git clone failure
+      printf '%s\n' "FAIL :: bash :: install :: https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh :: $HOME/.local/share/lunarvim :: $cr_script_sn/$LINENO"
 
-    # Exit ungracefully
-    exit 1
-  }
-
-  chmod +x /tmp/binenv
-  /tmp/binenv update
-  /tmp/binenv install binenv
-  rm /tmp/binenv
+      # Exit ungracefully
+      exit 1
+    }
 fi
 
 # Success
