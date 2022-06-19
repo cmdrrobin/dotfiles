@@ -1,6 +1,8 @@
 #!/usr/bin/env zsh
 ## .zshrc :: Z shell run commands
 
+# Fig pre block. Keep at the top of this file.
+. "$HOME/.fig/shell/zshrc.pre.zsh"
 
 #
 ## Z shell :: Run commands :: Includes
@@ -16,3 +18,6 @@ if [ ${#zsh_rc_if[@]} -gt 0 ]; then
         source "$zshrc"
     end
 fi
+
+# Fig post block. Keep at the bottom of this file.
+. "$HOME/.fig/shell/zshrc.post.zsh"
