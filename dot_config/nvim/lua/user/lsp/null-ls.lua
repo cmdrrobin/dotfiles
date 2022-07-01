@@ -19,7 +19,10 @@ null_ls.setup {
     formatting.black.with { extra_args = { "--fast" } },
     formatting.stylua,
     formatting.shfmt,
+    formatting.puppet_lint,
+    formatting.terraform_fmt,
     diagnostics.markdownlint,
     diagnostics.flake8,
+    diagnostics.shellcheck,
   },
 }
