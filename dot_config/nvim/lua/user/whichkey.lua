@@ -111,8 +111,6 @@ local mappings = {
   ["/"] = { '<cmd>lua require("Comment.api").toggle_current_linewise()<CR>', "Comment" },
   ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
-  ["z"] = { "<cmd>ZenMode<cr>", "Zen" },
-  ["m"] = { "<cmd>MarkdownPreview<cr>", "Markdown Preview" },
 
   p = {
     name = "Packer",
