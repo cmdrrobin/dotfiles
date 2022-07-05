@@ -46,5 +46,10 @@ for _, server in pairs(servers) do
     opts = vim.tbl_deep_extend("force", puppet_opts, opts)
   end
 
+  if server == "terraformls" then
+    local terraformls_opts = require "user.lsp.settings.terraformls"
+    opts = vim.tbl_deep_extend("force", terraformls_opts, opts)
+  end
+
   lspconfig[server].setup(opts)
 end
