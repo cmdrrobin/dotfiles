@@ -5,12 +5,12 @@ end
 
 local icons = require "user.icons"
 
-local error_red = "#F44747"
-local warning_orange = "#ff8800"
-local info_yellow = "#FFCC66"
-local hint_blue = "#4FC1FF"
-local perf_purple = "#7C3AED"
--- local note_green = '#10B981'
+local error_red = "#bf616a"
+local warning_orange = "#d08770"
+local info_yellow = "#ebcb8b"
+local hint_blue = "#5e81ac"
+local perf_purple = "#b48ead"
+local note_green = '#a3be8c'
 
 todo_comments.setup {
   signs = true, -- show icons in the signs column
