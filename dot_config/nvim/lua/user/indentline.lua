@@ -1,7 +1,12 @@
 local status_ok, indent_blankline = pcall(require, "indent_blankline")
 if not status_ok then
+  vim.notify "Cannot load indentline"
   return
 end
+
+-- NOTE: To display end of line characters
+-- vim.opt.list = true
+-- vim.opt.listchars:append("eol:↴")
 
 indent_blankline.setup {
   char = "▏",
@@ -19,5 +24,11 @@ indent_blankline.setup {
     "neogitstatus",
     "NvimTree",
     "Trouble",
+    "alpha",
+    "lir",
+    "Outline",
+    "spectre_panel",
+    "toggleterm",
+    "DressingSelect",
   },
 }
