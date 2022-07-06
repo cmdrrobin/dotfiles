@@ -7,25 +7,25 @@ local hide_in_width = function()
   return vim.fn.winwidth(0) > 80
 end
 
-vim.api.nvim_set_hl(0, "SLGitIcon", { fg = "#E8AB53", bg = "#303030" })
-vim.api.nvim_set_hl(0, "SLBranchName", { fg = "#D4D4D4", bg = "#303030", bold = false })
+-- vim.api.nvim_set_hl(0, "SLGitIcon", { fg = "#d08770", bg = "#303030" })
+-- vim.api.nvim_set_hl(0, "SLBranchName", { fg = "#d8dee9", bg = "#303030", bold = false })
 -- vim.api.nvim_set_hl(0, "SLProgress", { fg = "#D7BA7D", bg = "#252525" })
-vim.api.nvim_set_hl(0, "SLProgress", { fg = "#D4D4D4", bg = "#303030" })
-vim.api.nvim_set_hl(0, "SLSeparator", { fg = "#808080", bg = "#252525" })
+-- vim.api.nvim_set_hl(0, "SLProgress", { fg = "#d8dee9", bg = "#303030" })
+-- vim.api.nvim_set_hl(0, "SLSeparator", { fg = "#4c566a", bg = "#252525" })
 
 local colors = {
   bg = "#2e3440",
   fg = "#bbc2cf",
   yellow = "#ebcb8b",
-  cyan = "#008080",
-  darkblue = "#081633",
-  green = "#98be65",
-  orange = "#FF8800",
+  cyan = "#8fbcbb",
+  darkblue = "#5e81ac",
+  green = "#a3be8c",
+  orange = "#d08770",
   violet = "#a9a1e1",
   magenta = "#c678dd",
-  purple = "#c678dd",
-  blue = "#51afef",
-  red = "#ec5f67",
+  purple = "#b48ead",
+  blue = "#81a1c1",
+  red = "#bf616a",
 }
 
 local icons = require "user.icons"
@@ -104,7 +104,7 @@ lualine.setup {
   },
   sections = {
     lualine_a = { "mode" },
-    lualine_b = {"branch"},
+    lualine_b = { "branch" },
     lualine_c = { diagnostics },
     lualine_x = { diff, spaces, filetype },
     lualine_y = { location },
