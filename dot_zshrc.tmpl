@@ -3,15 +3,15 @@
 
 {{ if eq .chezmoi.os "darwin" -}}
 # Fig pre block. Keep at the top of this file.
-. "$HOME/.fig/shell/zshrc.pre.zsh"
-{{ end -}}
+source "$HOME/.fig/shell/zshrc.pre.zsh"
+{{- end }}
 
 #
 ## Z shell :: Run commands :: Includes
 source ~/.config/zsh/zshrc
 
 # Variable modification :: Z shell :: Run commands :: Include files
-zsh_rc_if=($ZDOTDIR/zsh_run_commands.d/*.zshrc)
+zsh_rc_if=($ZDOTDIR/run_commands.d/*.zshrc)
 
 # Validation :: Determine if number of run commands include files exceeds 0
 if [ ${#zsh_rc_if[@]} -gt 0 ]; then
@@ -24,7 +24,7 @@ fi
 
 {{ if eq .chezmoi.os "darwin" -}}
 # Fig post block. Keep at the bottom of this file.
-. "$HOME/.fig/shell/zshrc.post.zsh"
-{{ end -}}
+source "$HOME/.fig/shell/zshrc.post.zsh"
+{{- end }}
 
 # vim: set ft=zsh
