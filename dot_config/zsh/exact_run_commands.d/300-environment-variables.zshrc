@@ -2,7 +2,7 @@
 ## Z shell :: Load :: Environment variables
 
 # Variable modification :: Z shell :: Environment variable :: Include files
-zsh_ev_if=($HOME/.zsh_environments.d/*.zshrc) 2> /dev/null
+zsh_ev_if=($ZDOTDIR/environments.d/*.zshrc) 2> /dev/null
 
 # Validation :: Determine if number of environment variable include files exceeds 0
 if [ ${#zsh_ev_if[@]} -gt 0 ]; then

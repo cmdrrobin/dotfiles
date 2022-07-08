@@ -11,6 +11,3 @@ zsh-users/zsh-autosuggestions
 
 # ZSH history substring search :: Fish-like autosuggestions for zsh
 zsh-users/zsh-history-substring-search
-
-# Chosen theme for Z shell
-romkatv/powerlevel10k
