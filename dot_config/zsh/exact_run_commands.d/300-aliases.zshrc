@@ -1,7 +1,7 @@
 #
 ## Aliases
 
-zsh_aliases_if=($HOME/.zsh_aliases.d/*.zshrc) 2> /dev/null
+zsh_aliases_if=($ZDOTDIR/aliases.d/*.zshrc) 2> /dev/null
 
 if [ ${#zsh_aliases_if[@]} -gt 0 ]; then
     # Action :: Loop over Z shell environment variable include files
