@@ -4,12 +4,24 @@
 #
 
 # Source :: fzf :: Z shell :: Key bindings
+{{ if eq .chezmoi.os "darwin" -}}
 # shellcheck disable=SC1091
 source /usr/local/opt/fzf/shell/key-bindings.zsh
+{{- else }}
+# shellcheck disable=SC1091
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+{{ end -}}
+
 
 # Source :: fzf :: Z shell :: Completions
 # shellcheck disable=SC1091
+{{ if eq .chezmoi.os "darwin" -}}
+# shellcheck disable=SC1091
 source /usr/local/opt/fzf/shell/completion.zsh
+{{- else }}
+# shellcheck disable=SC1091
+source /usr/share/doc/fzf/examples/completion.zsh
+{{ end -}}
 
 # vi: filetype=zsh
 {{ end -}}
