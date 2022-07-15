@@ -21,13 +21,7 @@ My preferred color/theme for almost everything.
 The Operator Mono font is too expensive for my usage, but Dank Mono comes as
 a good alternative and is much cheaper.
 
-### Powerlevel10k: The perfect shell
-[Powerlevel10k](https://github.com/romkatv/powerlevel10k)
-
-For my the perfect shell to use.
-
 ### iTerm2: The terminal that Apple should have included with MacOS
 [iTerm2](https://iterm2.com)
 
 The perfect terminal for MacOS. Although they should have chosen a different name.
-

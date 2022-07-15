@@ -37,11 +37,12 @@ if [ ! -e "$cr_initial_state" ]; then
   printf '%s\n' "WARN :: Initial run. Require SSH key"
 
   # Exit Gracefully
-  exit 1
+  exit 0
 fi
 
-if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+if [ ! -d "$HOME/.config/nvim" ]; then
   git clone git@github.com:rgruyters/nvim.git "$HOME/.config/nvim" || {
+
     # Git clone failure
     printf '%s\n' "FAIL :: git :: clone :: git@github.com:rgruyters/nvim.git :: $HOME/.config/nvim :: $cr_script_sn/$LINENO"
 
@@ -51,9 +52,9 @@ if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
 fi
 
 touch "$cr_state_success" || {
-    # touch failure
-    printf '%s\n' "FAIL :: touch :: $cr_state_success :: $cr_script_sn/$LINENO"
+  # touch failure
+  printf '%s\n' "FAIL :: touch :: $cr_state_success :: $cr_script_sn/$LINENO"
 
-    # Exit ungracefully
-    exit 1
+  # Exit ungracefully
+  exit 1
 }
