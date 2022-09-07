@@ -1,15 +1,21 @@
 [colors]
-
-background = #2e3440
-foreground = #feceff
-red        = #bf616a
-green      = #a3be8c
-yellow     = #ebcb8b
-blue       = #5e81ac
-purple     = #b48ead
-cyan       = #88c0d0
-orange     = #d08770
-grey       = #d8dee9
+; Nord themed colours
+nord0 = #2e3440
+nord1 = #3b4252
+nord2 = #434c5e
+nord3 = #4c566a
+nord4 = #d8dee9
+nord5 = #e5e9f0
+nord6 = #eceff4
+nord7 = #8fbcbb
+nord8 = #88c0d0
+nord9 = #81a1c1
+nord10 = #5e81ac
+nord11 = #bf616a
+nord12 = #d08770
+nord13 = #ebcb8b
+nord14 = #a3be8c
+nord15 = #b48ead
 
 [bar/top]
 ; Make bar apair below window
@@ -24,20 +30,23 @@ height = 30
 ; Position
 bottom = false
 
+separator = |
+separator-foreground = ${colors.nord3}
+
 ; Radius
 radius = 0
 
 ; Colors
-background = ${colors.background}
-foreground = ${colors.grey}
+background = ${colors.nord0}
+foreground = ${colors.nord4}
 
 ; Underline
 line-size  = 2
-line-color = ${colors.foreground}
+line-color = ${colors.nord3}
 
 ; Border
 border-size  = 0
-border-color = ${colors.background}
+border-color = ${colors.nord0}
 
 ; Padding
 padding-left  = 0
@@ -52,7 +61,7 @@ font-1 = Font Awesome:style=Regular:size=12;3
 
 ; Modules
 modules-left   = i3
-modules-right  = network lock logout poweroff time date
+modules-right  = filesystem memory cpu network lock logout poweroff time date
 
 [module/i3]
 type = internal/i3
@@ -80,7 +89,8 @@ ws-icon-default = 
 
 ; Focused label
 label-focused            = %icon%
-label-focused-foreground = ${colors.green}
+label-focused-foreground = ${colors.nord14}
+label-focused-background = ${colors.nord3}
 label-focused-padding    = 2
 
 ; Unfocused labels
@@ -93,22 +103,8 @@ label-visible-padding = 2
 
 ; Urgent labels
 label-urgent            = %icon%
-label-urgent-foreground = ${colors.red}
+label-urgent-foreground = ${colors.nord11}
 label-urgent-padding    = 2
-
-;bar-used-width = 5
-;bar-used-foreground-0 = #aaff77
-;bar-used-foreground-1 = #aaff77
-;bar-used-foreground-2 = #fba922
-;bar-used-foreground-3 = #ff5555
-;bar-used-indicator = |
-;bar-used-indicator-font = 6
-;bar-used-indicator-foreground = #ff
-;bar-used-fill = ─
-;bar-used-fill-font = 6
-;bar-used-empty = ─
-;bar-used-empty-font = 6
-;bar-used-empty-foreground = #444444
 
 [module/time]
 type = internal/date
@@ -121,7 +117,7 @@ time = %%{F#fff}%H:%M:%S%%{F-}
 
 ; Label
 label         =   %time%
-label-padding = 4
+label-padding = 2
 
 [module/date]
 type = internal/date
@@ -134,7 +130,7 @@ date = %%{F#999}%d-%m-%Y%%{F-}
 
 ; Label
 label         =   %date%
-label-padding = 4
+label-padding = 2
 
 [module/network]
 type = internal/network
@@ -144,13 +140,13 @@ interface = ens33
 
 ; Connected label
 label-connected            = 
-label-connected-foreground = ${colors.green}
-label-connected-padding    = 2
+label-connected-foreground = ${colors.nord14}
+label-connected-padding    = 1
 
 ; Disconnected label
 label-disconnected            = 
-label-disconnected-foreground = ${colors.red}
-label-disconnected-padding    = 2
+label-disconnected-foreground = ${colors.nord11}
+label-disconnected-padding    = 1
 
 [module/lock]
 type = custom/text
@@ -158,7 +154,7 @@ type = custom/text
 ; Label
 content            = 
 ; content-foreground = ${colors.foreground}
-content-padding    = 2
+content-padding    = 1
 
 ; Mouse click
 click-left = i3lock-fancy -p
@@ -169,7 +165,7 @@ type = custom/text
 ; Label
 content            = 
 ; content-foreground = ${colors.foreground}
-content-padding    = 2
+content-padding    = 1
 
 ; Mouse click
 click-left = i3-msg exit
@@ -179,14 +175,39 @@ type = custom/text
 
 ; Label
 content            = 
-content-foreground = ${colors.red}
-content-padding    = 2
+content-foreground = ${colors.nord11}
+content-padding    = 1
 
 ; Mouse click
 click-left = poweroff
 
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+label-mounted = %{F#F0C674}%mountpoint%%{F-} %percentage_used%%
+label-mounted-padding = 1
+
+label-unmounted = %mountpoint% not mounted
+label-unmounted-padding = 1
+; label-unmounted-foreground = ${colors.nord3}
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "RAM "
+format-prefix-foreground = ${colors.nord13}
+format-padding = 1
+label = %percentage_used:2%%
+
 [module/cpu]
 type = internal/cpu
-interval = 0.5
-format = <label> <ramp-coreload>
-label = CPU
+interval = 2
+format-prefix = "CPU "
+format-prefix-foreground = ${colors.nord13}
+format-padding = 1
+label = %percentage:2%%
+
+; vim:ft=dosini
