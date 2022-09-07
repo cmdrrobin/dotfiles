@@ -23,6 +23,12 @@ readonly cr_state_success="$HOME/.config/chezmoi/state/$cr_script_sn"
 # Initial install state file definition
 readonly cr_initial_state="$HOME/.config/chezmoi/state/run_999_initial_install"
 
+{{ if ne .chezmoi.os "darwin" -}}
+readonly repo=git@github.com:rgruyters/nvim.git
+{{ else - }}
+readonly repo=https://github.com/rgruyters/nvim.git
+{{ end -}}
+
 #
 ## Preprocess :: Phase 0
 
@@ -41,7 +47,7 @@ if [ ! -e "$cr_initial_state" ]; then
 fi
 
 if [ ! -d "$HOME/.config/nvim" ]; then
-  git clone git@github.com:rgruyters/nvim.git "$HOME/.config/nvim" || {
+  git clone "$repo" "$HOME/.config/nvim" || {
 
     # Git clone failure
     printf '%s\n' "FAIL :: git :: clone :: git@github.com:rgruyters/nvim.git :: $HOME/.config/nvim :: $cr_script_sn/$LINENO"
