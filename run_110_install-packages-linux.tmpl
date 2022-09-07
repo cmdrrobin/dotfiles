@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 ## Package installer for Linux
 
+# Validate if we are runinng on Linux system
 {{ if ne .chezmoi.os "linux" -}}
 exit 0
 {{ end -}}
+
 # Fail-safe :: Return value of a pipeline is the value of the last (rightmost) 
 # command to exit with a non-zero status, or zero if all commands in the 
 # pipeline exit successfully
@@ -31,18 +33,11 @@ fi
 # Install required packages for adding repo's
 sudo apt update -qq
 sudo apt install -y apt-transport-https gnupg2 rng-tools \
-  fonts-firacode powerline fonts-powerline python3-powerline \
+  powerline fonts-powerline python3-powerline \
   make build-essential libssl-dev zlib1g-dev \
   libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
   libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev \
   jq
-
-# Adding Nerd font
-mkdir -p ~/.local/share/fonts
-curl -fLo "$HOME/.local/share/fonts/Fira Code Retina Nerd Font Complete.ttf" \
-  https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Retina/complete/Fira%20Code%20Retina%20Nerd%20Font%20Complete.ttf
-curl -sfLo "$HOME/.local/share/fonts/Fira Code Regular Nerd Font Complete.ttf" \
-  https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/complete/Fira%20Code%20Regular%20Nerd%20Font%20Complete.ttf
 
 # Install Gopass
 GOPASS_LATEST_DL=$(curl -sL https://api.github.com/repos/gopasspw/gopass/releases | jq -r ".assets[] | select(.name | test(\"{{ .chezmoi.os }}_{{ .chezmoi.arch }}\")) | .browser_download_url")
@@ -53,7 +48,10 @@ sudo dpkg -i /tmp/gopass_linux_amd64.deb
 curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 
 # Install other packages
-sudo apt install -y tmux fzf neovim python3 zsh silversearcher-ag python3-neovim
+sudo apt install -y tmux fzf neovim python3 zsh ripgrep python3-neovim fonts-jetbrains-mono
+
+# Install i3wm and related stuff
+sudo apt install -y i3 polybar kitty
 
 # Install pyenv
 curl https://pyenv.run | bash
