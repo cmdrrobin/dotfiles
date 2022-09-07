@@ -25,7 +25,7 @@ readonly cr_initial_state="$HOME/.config/chezmoi/state/run_999_initial_install"
 
 {{ if eq .chezmoi.os "darwin" -}}
 readonly repo=git@github.com:rgruyters/nvim.git
-{{ else - }}
+{{ else -}}
 readonly repo=https://github.com/rgruyters/nvim.git
 {{ end -}}
 
