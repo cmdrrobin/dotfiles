@@ -2,13 +2,19 @@
   name = Robin Gruyters
   initials = rg
   email = {{ .git.email }}
-  signingkey = {{ .git.gpg_key }}
+  signingkey = {{ .git.sign_key }}
 
 [grep]
   line-number = true
 
 [gpg]
   program = gpg
+  {{ if eq .chezmoi.os "darwin" -}}
+  format = ssh
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+  {{- end }}
 
 [commit]
   gpgsign = true
