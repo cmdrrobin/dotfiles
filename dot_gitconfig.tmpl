@@ -31,3 +31,11 @@
 
 [init]
   defaultBranch = main
+
+{{ if eq .chezmoi.os "darwin" -}}
+[includeIf "gitdir:~/code/sky"]
+  path = ~/code/sky/.gitconfig
+
+[includeIf "gitdir:~/code/sue"]
+  path = ~/code/sue/.gitconfig
+{{ end -}}
