@@ -1,11 +1,6 @@
 #!/usr/bin/env zsh
 ## .zshrc :: Z shell run commands
 
-{{ if eq .chezmoi.os "darwin" -}}
-# Fig pre block. Keep at the top of this file.
-source "$HOME/.fig/shell/zshrc.pre.zsh"
-{{- end }}
-
 #
 ## Z shell :: Run commands :: Includes
 source ~/.config/zsh/zshrc
@@ -21,10 +16,5 @@ if [ ${#zsh_rc_if[@]} -gt 0 ]; then
         source "$zshrc"
     end
 fi
-
-{{ if eq .chezmoi.os "darwin" -}}
-# Fig post block. Keep at the bottom of this file.
-source "$HOME/.fig/shell/zshrc.post.zsh"
-{{- end }}
 
 # vim: set ft=zsh
