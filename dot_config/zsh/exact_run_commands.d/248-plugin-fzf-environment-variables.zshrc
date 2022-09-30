@@ -2,7 +2,10 @@
 ## Plugin :: fzf :: Environment variables
 
 # Variable modification :: FZF_DEFAULT_OPTS
-export FZF_DEFAULT_OPTS="--color=bg+:#073642,bg:#002b36,spinner:#719e07,hl:#586e75 --color=fg:#839496,header:#586e75,info:#cb4b16,pointer:#719e07 --color=marker:#719e07,fg+:#839496,prompt:#719e07,hl+:#719e07"
+export FZF_DEFAULT_OPTS=" \
+  --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
+  --color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
+  --color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
 
 # Variable modification :: FZF_CTRL_T_COMMAND
 export FZF_CTRL_T_COMMAND='fd --exclude '.git' --hidden --no-ignore-vcs --type f | izer iconize -f=nerd -c'
