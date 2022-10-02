@@ -11,6 +11,9 @@
 
 set $mod Mod1
 
+# Set DPI value
+set_from_resource $dpi Xft.dpi 96
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:JetBrains Mono 11
@@ -33,13 +36,6 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
-
-# Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -155,7 +151,9 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 assign [class="kitty"] $ws1
 assign [class="firefox"] $ws2
-assign [class="1password"] $ws4
+assign [class="1Password"] $ws4
+
+for_window [class="1Password"] floating enable sticky enable border pixel 1
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -188,11 +186,11 @@ bindsym $mod+r mode "resize"
 
 # Catppuccin theme colors
 # class                   border  backgr. text    indic.  child_border
-client.focused            #babbf1 #313244 #CDD6F4 #F5E0DC #8caaee
-client.focused_inactive   #babbf1 #313244 #CDD6F4 #F5E0DC #ca9ee6
-client.unfocused          #CBA6F7 #313244 #CDD6F4 #F5E0DC #ca9ee6
-client.urgent             #F38BA8 #313244 #CDD6F4 #F5E0DC #FF9580
-client.placeholder        #F2CDCD #313244 #CDD6F4 #F5E0DC #282A36
+client.focused            #babbf1 #313244 #CDD6F4 #85c1dc #8caaee
+client.focused_inactive   #babbf1 #313244 #CDD6F4 #85c1dc #ca9ee6
+client.unfocused          #CBA6F7 #313244 #CDD6F4 #85c1dc #ca9ee6
+client.urgent             #F38BA8 #313244 #CDD6F4 #85c1dc #FF9580
+client.placeholder        #F2CDCD #313244 #CDD6F4 #85c1dc #282A36
 client.background         #F2CDCD
 
 
