@@ -1,70 +1,46 @@
-[colors]
-; Nord themed colours
-nord0 = #2e3440
-nord1 = #3b4252
-nord2 = #434c5e
-nord3 = #4c566a
-nord4 = #d8dee9
-nord5 = #e5e9f0
-nord6 = #eceff4
-nord7 = #8fbcbb
-nord8 = #88c0d0
-nord9 = #81a1c1
-nord10 = #5e81ac
-nord11 = #bf616a
-nord12 = #d08770
-nord13 = #ebcb8b
-nord14 = #a3be8c
-nord15 = #b48ead
+include-file = colors/frappe.ini
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+[settings]
+screenchange-reload = true
 
 [bar/top]
-; Make bar apair below window
-;override-redirect = true
-
+monitor = ${env:MONITOR}
 wm-restack = i3
 
 ; Size
 width  = 100%
-height = 30
-
-; Position
-bottom = false
-
-separator = |
-separator-foreground = ${colors.nord3}
-
-; Radius
-radius = 0
+height = 24pt
+fixed-center = true
 
 ; Colors
-background = ${colors.nord0}
-foreground = ${colors.nord4}
+background = ${colors.crust}
+foreground = ${colors.text}
 
 ; Underline
-line-size  = 2
+line-size  = 1pt
 line-color = ${colors.nord3}
 
-; Border
-border-size  = 0
-border-color = ${colors.nord0}
-
-; Padding
-padding-left  = 0
-padding-right = 0
-
 ; Margin of modules
-module-margin-left  = 0
-module-margin-right = 0
+module-margin-left  = 4pt
+module-margin-right = 4pt
 
 font-0 = JetBrains Mono Nerd Font:style=Regular:size=10;3
 ; font-1 = Font Awesome:style=Regular:size=12;3
 
 ; Modules
 modules-left   = i3
-modules-right  = filesystem memory cpu network lock logout poweroff time date
+modules-center = time date
+modules-right  = filesystem memory cpu network lock logout poweroff
 
 [module/i3]
 type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
 
 ; Pin workspaces
 pin-workspaces = true
@@ -75,37 +51,33 @@ enable-click = true
 ; Mouse scroll
 enable-scroll = false
 
-; Sort
-index-sort = false
-
-; Display icons
-fuzzy-match = true
-
 ; Icons
 ws-icon-0       = 1;
-ws-icon-1       = 2;
+ws-icon-1       = 2;
 ws-icon-2       = 3;
 ws-icon-3       = 4;
-ws-icon-default = 
+ws-icon-4       = 5;
+ws-icon-default = 
 
 ; Focused label
 label-focused            = %icon%
-label-focused-foreground = ${colors.nord14}
-label-focused-background = ${colors.nord3}
-label-focused-padding    = 2
+label-focused-foreground = ${colors.pink}
+label-focused-padding    = 8pt
 
 ; Unfocused labels
 label-unfocused         = %icon%
-label-unfocused-padding = 2
+label-unmounted-foreground = ${colors.mauve}
+label-unfocused-padding = ${self.label-focused-padding}
 
 ; Visible labels
 label-visible         = %icon%
-label-visible-padding = 2
+label-visible-foreground = ${colors.mauve}
+label-visible-padding = ${self.label-focused-padding}
 
 ; Urgent labels
 label-urgent            = %icon%
-label-urgent-foreground = ${colors.nord11}
-label-urgent-padding    = 2
+label-urgent-foreground = ${colors.red}
+label-urgent-padding    = ${self.label-focused-padding}
 
 [module/time]
 type = internal/date
@@ -118,7 +90,6 @@ time = %%{F#fff}%H:%M:%S%%{F-}
 
 ; Label
 label         =   %time%
-label-padding = 2
 
 [module/date]
 type = internal/date
@@ -131,7 +102,6 @@ date = %%{F#999}%d-%m-%Y%%{F-}
 
 ; Label
 label         =   %date%
-label-padding = 2
 
 [module/network]
 type = internal/network
@@ -141,13 +111,11 @@ interface = ens33
 
 ; Connected label
 label-connected            = 
-label-connected-foreground = ${colors.nord14}
-label-connected-padding    = 1
+label-connected-foreground = ${colors.teal}
 
 ; Disconnected label
 label-disconnected            = 
-label-disconnected-foreground = ${colors.nord11}
-label-disconnected-padding    = 1
+label-disconnected-foreground = ${colors.red}
 
 [module/lock]
 type = custom/text
@@ -155,7 +123,7 @@ type = custom/text
 ; Label
 content            = 
 ; content-foreground = ${colors.foreground}
-content-padding    = 1
+; content-padding    = 1
 
 ; Mouse click
 click-left = i3lock-fancy -p
@@ -165,8 +133,8 @@ type = custom/text
 
 ; Label
 content            = 
-; content-foreground = ${colors.foreground}
-content-padding    = 1
+content-foreground = ${colors.flamingo}
+; content-padding    = 1
 
 ; Mouse click
 click-left = i3-msg exit
@@ -176,8 +144,8 @@ type = custom/text
 
 ; Label
 content            = 
-content-foreground = ${colors.nord11}
-content-padding    = 1
+content-foreground = ${colors.red}
+; content-padding    = 1
 
 ; Mouse click
 click-left = poweroff
@@ -189,26 +157,26 @@ interval = 25
 mount-0 = /
 
 label-mounted = %{F#F0C674}%mountpoint%%{F-} %percentage_used%%
-label-mounted-padding = 1
+; label-mounted-padding = 1
 
 label-unmounted = %mountpoint% not mounted
-label-unmounted-padding = 1
+; label-unmounted-padding = 1
 ; label-unmounted-foreground = ${colors.nord3}
 
 [module/memory]
 type = internal/memory
 interval = 2
 format-prefix = "RAM "
-format-prefix-foreground = ${colors.nord13}
-format-padding = 1
+format-prefix-foreground = ${colors.yellow}
+; format-padding = 1
 label = %percentage_used:2%%
 
 [module/cpu]
 type = internal/cpu
 interval = 2
 format-prefix = "CPU "
-format-prefix-foreground = ${colors.nord13}
-format-padding = 1
+format-prefix-foreground = ${colors.yellow}
+; format-padding = 1
 label = %percentage:2%%
 
 ; vim:ft=dosini
