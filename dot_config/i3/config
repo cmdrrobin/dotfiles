@@ -12,7 +12,7 @@
 set $mod Mod1
 
 # Set DPI value
-set_from_resource $dpi Xft.dpi 96
+set_from_resource $dpi Xft.dpi 192
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -80,7 +80,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+z split h
 
 # split in vertical orientation
 bindsym $mod+v split v
