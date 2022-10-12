@@ -3,16 +3,20 @@ include-file = $HOME/.config/polybar/colors/frappe.ini
 [bar/top]
 ; Make bar apair below window
 ;override-redirect = true
-monitor = ${env:MONITOR}
+monitor = ${env:MONITOR:Virtual1}
+; tray-position = ${env:TRAY_POSITION:right}
 wm-restack = i3
+
+dpi = 96
 
 ; Size
 width  = 100%
-height = 32pt
+height = 34
 fixed-center = true
 
 ; Position
 bottom = false
+border-bottom-size = 5
 
 ; Radius
 radius = 0
@@ -133,7 +137,7 @@ type = custom/text
 ; Label
 content            = 
 ; content-foreground = ${colors.foreground}
-content-padding    = 2pt
+content-padding    = 2
 
 ; Mouse click
 click-left = i3lock-fancy -p
@@ -144,7 +148,7 @@ type = custom/text
 ; Label
 content            = 
 ; content-foreground = ${colors.foreground}
-content-padding    = 2pt
+content-padding    = 2
 
 ; Mouse click
 click-left = i3-msg exit
@@ -155,7 +159,7 @@ type = custom/text
 ; Label
 content            = 
 content-foreground = ${colors.red}
-content-padding    = 2pt
+content-padding    = 2
 
 ; Mouse click
 click-left = poweroff
@@ -166,27 +170,38 @@ interval = 25
 
 mount-0 = /
 
-label-mounted = %{F#F0C674}%mountpoint%%{F-} %percentage_used%%
-label-mounted-padding = 1
+format-mounted-foreground     = ${colors.blue}
+format-mounted-prefix         = 
+format-mounted-prefix-padding = 1
+label-mounted                 = %free%
+label-mounted-padding         = 1
 
-label-unmounted = %mountpoint% not mounted
-label-unmounted-padding = 1
-; label-unmounted-foreground = ${colors.nord3}
+format-unmounted-prefix       =
+label-unmounted               = %mountpoint%: not mounted
+label-unmounted-padding       = ${self.label-mounted-padding}
+; label-mounted = %{F#F0C674}%mountpoint%%{F-} %percentage_used%%
+; label-mounted-padding = 1
+;
+; label-unmounted = %mountpoint% not mounted
+; label-unmounted-padding = 1
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = "RAM "
-format-prefix-foreground = ${colors.yellow}
+format-prefix = "﬙ "
+format-prefix-foreground = ${colors.mauve}
 format-padding = 1
 label = %percentage_used:2%%
 
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = "CPU "
+format-prefix = " "
 format-prefix-foreground = ${colors.yellow}
 format-padding = 1
 label = %percentage:2%%
+
+[settings]
+screenchange-reload = true
 
 ; vim:ft=dosini
