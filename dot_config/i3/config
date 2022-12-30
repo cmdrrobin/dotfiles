@@ -211,5 +211,6 @@ client.background         #F2CDCD
 
 exec --no-startup-id $HOME/.local/bin/launch_polybar
 exec --no-startup-id 1password --silent
+exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 
 exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Backgrounds/space.jpg
