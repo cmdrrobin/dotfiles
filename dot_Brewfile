@@ -29,12 +29,10 @@ brew 'black'
 
 # Develop tools
 brew 'jq'
-brew 'composer'
 brew 'node@16'
 brew 'python3'
 brew 'pyenv'
 brew 'pyenv-virtualenv'
-brew 'php'
 brew 'git'
 brew 'gitmoji'
 
@@ -49,8 +47,6 @@ cask 'brave-browser'
 cask '1password'
 cask '1password-cli'
 cask 'vmware-fusion'
-cask 'fig'
-cask 'dash'
 cask 'balenaetcher'
 
 # Fonts
