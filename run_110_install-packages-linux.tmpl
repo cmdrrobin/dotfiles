@@ -40,18 +40,18 @@ sudo apt install -y apt-transport-https gnupg2 rng-tools \
   make build-essential libssl-dev zlib1g-dev \
   libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
   libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev \
-  jq software-properties-common python-software-properties
+  jq software-properties-common policykit-desktop-privileges policykit-1-gnome
 
 # Install Gopass
-GOPASS_LATEST_DL=$(curl -sL https://api.github.com/repos/gopasspw/gopass/releases | jq -r ".assets[] | select(.name | test(\"\{\{ .chezmoi.os \}\}_\{\{ .chezmoi.arch \}\}\")) | .browser_download_url")
-curl -sLo /tmp/gopass_{{ .chezmoi.os }}_{{ .chezmoi.arch }}.deb $GOPASS_LATEST_DL
+GOPASS_LATEST_DL=$(curl -sL https://api.github.com/repos/gopasspw/gopass/releases | jq -r '.[].assets[] | select(.name | test("linux_amd64")) | .browser_download_url'|head -1)
+curl -sLo /tmp/gopass_linux_amd64.deb $GOPASS_LATEST_DL
 sudo dpkg -i /tmp/gopass_linux_amd64.deb
 
 # Install Nodejs (LTS)
 curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 
 # Python related stuff
-sudo apt install -y python-dev python-pip python3-dev python3-pip
+sudo apt install -y python3-dev python3-pip
 
 # Use custom Neovim repository
 sudo add-apt-repository ppa:neovim-ppa/stable
