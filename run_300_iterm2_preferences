@@ -23,7 +23,7 @@ readonly cr_script_sn='run_300_iterm2_preferences'
 ## Initialization :: Variables :: Dynamic
 
 # Variable modification :: Checksum :: iTerm2 :: Preferences
-readonly cr_checksum_iterm2_preferences="$HOME/.config/chezmoi/checksum/$cr_script_sn/com.googlecode.iterm2.plist"
+readonly cr_checksum_iterm2_preferences="$HOME/.config/chezmoi/state/$cr_script_sn/com.googlecode.iterm2.plist"
 
 # Variable modification :: Target :: iTerm2 :: Preferences
 readonly cr_target_iterm2_preferences="$HOME/.local/share/chezmoi/.data/$cr_script_sn/com.googlecode.iterm2.plist"
@@ -60,10 +60,10 @@ fi
 #
 ## Postprocess :: Phase 0
 
-# Validate :: Existence directory :: $HOME/.config/chezmoi/checksum/$cr_script_sn
-if [[ ! -d "$HOME/.config/chezmoi/checksum/$cr_script_sn" ]]; then
-    # Directory modification :: $HOME/.config/chezmoi/checksum/$cr_script_sn
-    mkdir -v "$HOME/.config/chezmoi/checksum/$cr_script_sn"
+# Validate :: Existence directory :: $HOME/.config/chezmoi/state/$cr_script_sn
+if [[ ! -d "$HOME/.config/chezmoi/state/$cr_script_sn" ]]; then
+    # Directory modification :: $HOME/.config/chezmoi/state/$cr_script_sn
+    mkdir -v "$HOME/.config/chezmoi/state/$cr_script_sn"
 fi
 
 # File modification :: $cr_checksum_iterm2_preferences
