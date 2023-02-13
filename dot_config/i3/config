@@ -155,6 +155,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 assign [class="kitty"] $ws1
 assign [class="firefox"] $ws2
+assign [class="chrome"] $ws2
 assign [class="1Password"] $ws4
 
 for_window [class="1Password"] floating enable sticky disable border pixel 1
