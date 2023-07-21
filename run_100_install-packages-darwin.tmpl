@@ -27,6 +27,7 @@ if [ -e "$cr_state_success" ]; then
     exit 0
 fi
 
+# Install Brew
 if [ ! -f "/usr/local/bin/brew" ]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
@@ -37,10 +38,6 @@ brew bundle install --global || true
 # Remove stale or outdated downloads
 brew cleanup --prune 0 || true
 
-# Pre-download Nord theme for iTerm2
-curl -sL https://raw.githubusercontent.com/arcticicestudio/nord-iterm2/develop/src/xml/Nord.itermcolors \
-  -o $HOME/Downloads/Nord.itermcolors
-
 # Success
 touch "$cr_state_success" || {
     # touch failure
@@ -49,3 +46,5 @@ touch "$cr_state_success" || {
     # Exit ungracefully
     exit 1
 }
+
+# vim: ft=sh
