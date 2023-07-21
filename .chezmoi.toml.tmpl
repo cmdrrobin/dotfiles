@@ -1,10 +1,13 @@
 {{- $git_email := promptString "email for git" -}}
-{{- $gpg_key := promptString "GPG signing key" -}}
+{{- $ssh_pub_key := promptString "SSH public key" -}}
 {{- $workspace := promptString "work space" -}}
+
+[edit]
+    command = "nvim"
 
 [data]
     workspace = "{{ $workspace }}"
 
 [data.git]
     email = "{{ $git_email }}"
-    gpg_key = "{{ $gpg_key }}"
+    sign_key = "{{ $ssh_pub_key }}"
