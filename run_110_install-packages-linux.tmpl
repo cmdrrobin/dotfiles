@@ -29,7 +29,6 @@ if [ -e "$cr_state_success" ]; then
     exit 0
 fi
 
-{{ if ne .workspace "server" -}}
 # Create paths
 mkdir $HOME/Pictures/Backgrounds
 
@@ -58,22 +57,31 @@ sudo add-apt-repository ppa:neovim-ppa/stable
 sudo apt-get update
 
 # Install other packages
-sudo apt install -y tmux fzf neovim zsh ripgrep python3-neovim fonts-jetbrains-mono fonts-awesome-font
+sudo apt install -y tmux fzf neovim zsh ripgrep python3-neovim
+
+# Install fonts
+sudo apt install -y fonts-jetbrains-mono fonts-awesome-font
 
 # Install i3wm and related stuff
-sudo apt install -y i3 polybar kitty feh rofi
+sudo apt install -y i3 i3status polybar kitty feh rofi
 
-# Install pyenv
-curl https://pyenv.run | bash
+# Install Kitty terminal - https://sw.kovidgoyal.net/kitty
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+mkdir $HOME/bin && ln -nfs $HOME/.local/kitty.app/bin/kitty $HOME/bin/kitty
 
-# Installing Nerd Fonts
+# Install miniconda - https://docs.conda.io/en/latest/miniconda.html
+bash -c $(curl -sLO https://repo.anaconda.com/miniconda/Miniconda3-py310_23.5.2-0-Linux-x86_64.sh)
+
+# Installing Nerd Fonts - https://www.nerdfonts.com
 curl -sL -o /tmp/JetBrainsMono.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/JetBrainsMono.zip
-mkdir $HOME/.local/share/fonts
+mkdir -p $HOME/.local/share/fonts
 (cd $HOME/.local/share/fonts && unzip /tmp/JetBrainsMono.zip -x '*Windows*' '* NL*' 'readme.md')
+
+curl -sLO -o /tmp/NerdFontsSymbolsOnly.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/NerdFontsSymbolsOnly.zip
+(cd $HOME/.local/share/fonts && unzip /tmp/NerdFontsSymbolsOnly.zip -x '*Windows*' '* NL*' 'readme.md')
 
 # Update font cache
 fc-cache -f
-{{ end -}}
 
 # Success
 touch "$cr_state_success" || {
