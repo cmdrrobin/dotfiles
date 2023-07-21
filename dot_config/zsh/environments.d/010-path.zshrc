@@ -1,2 +1,4 @@
 #
-export PATH="$HOME/.binenv:$HOME/bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="$HOME/bin:/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+
+# vim: ft=zsh
