@@ -4,8 +4,6 @@ set -o pipefail
 
 set -u
 
-if [ -d "$HOME/.config/chezmoi/state" ]; then
-  exit 0
+if [ ! -d "$HOME/.config/chezmoi/state" ]; then
+    mkdir -p $HOME/.config/chezmoi/state
 fi
-
-mkdir -p $HOME/.config/chezmoi/state
