@@ -32,6 +32,7 @@ zsh_add_plugin "hlissner/zsh-autopair"
 zsh_add_plugin "Aloxaf/fzf-tab"
 zsh_add_plugin "zsh-users/zsh-history-substring-search"
 zsh_add_plugin "wintermi/zsh-brew"
+zsh_add_plugin "jeffreytse/zsh-vi-mode"
 
 # For more plugins: https://github.com/unixorn/awesome-zsh-plugins
 # More completions https://github.com/zsh-users/zsh-completions
