@@ -14,6 +14,12 @@ function zsh_add_plugin() {
     fi
 }
 
+function zsh_update_plugin() {
+  if [ -d "$ZDOTDIR"/plugins ]; then
+      (cd $ZDOTDIR/plugins && \ls | while read -r plugin; do (cd $plugin && git pull); done)
+  fi
+}
+
 function zsh_add_completion() {
     PLUGIN_NAME=$(echo $1 | cut -d "/" -f 2)
     if [ -d "$ZDOTDIR/plugins/$PLUGIN_NAME" ]; then 
