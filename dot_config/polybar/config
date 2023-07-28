@@ -38,7 +38,6 @@ module-margin-left  = 0
 module-margin-right = 0
 
 font-0 = JetBrains Mono Nerd Font:style=Regular:size=10;3
-; font-1 = Font Awesome:style=Regular:size=12;3
 
 ; Modules
 modules-left   = i3
@@ -188,7 +187,7 @@ label-unmounted-padding       = ${self.label-mounted-padding}
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = "﬙ "
+format-prefix = "󰺢 "
 format-prefix-foreground = ${colors.mauve}
 format-padding = 1
 label = %percentage_used:2%%
@@ -196,7 +195,7 @@ label = %percentage_used:2%%
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
+format-prefix = "󰍛 "
 format-prefix-foreground = ${colors.yellow}
 format-padding = 1
 label = %percentage:2%%
