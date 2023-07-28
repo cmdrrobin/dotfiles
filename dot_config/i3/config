@@ -156,9 +156,8 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 assign [class="kitty"] $ws1
 assign [class="firefox"] $ws2
 assign [class="chrome"] $ws2
-assign [class="1Password"] $ws4
 
-for_window [class="1Password"] floating enable sticky disable border pixel 1
+for_window [class="1Password"] floating enable, sticky disable, border pixel 1
 
 # Control gaps for each window
 default_border pixel 0
@@ -219,6 +218,8 @@ client.background         #F2CDCD
 
 exec --no-startup-id 1password --silent
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+exec --no-startup-id /usr/bin/vmware-user
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
 exec_always --no-startup-id feh --bg-fill $HOME/Pictures/Backgrounds/space.jpg
