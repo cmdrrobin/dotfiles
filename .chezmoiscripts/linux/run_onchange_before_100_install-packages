@@ -2,9 +2,7 @@
 ## Package installer for Linux
 
 # Validate if we are runinng on Linux system
-{{ if ne .chezmoi.os "linux" -}}
 exit 0
-{{ end -}}
 
 # Fail-safe :: Return value of a pipeline is the value of the last (rightmost) 
 # command to exit with a non-zero status, or zero if all commands in the 
