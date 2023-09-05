@@ -1,7 +1,7 @@
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 {{- if eq .chezmoi.os "darwin" }}
-_path="/usr/local/Caskroom/miniconda/base"
+_path="$HOMEBREW_PREFIX/Caskroom/miniconda/base"
 {{- else }}
 _path="$HOME/.local/miniconda3"
 {{- end }}

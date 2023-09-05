@@ -20,11 +20,10 @@ brew 'fzf'
 brew 'solargraph'
 
 # Develop tools
-brew 'aquaproj/aqua/aqua'
 brew 'jq'
 brew 'node@16'
 brew 'python3'
-brew 'miniconda'
+cask 'miniconda'
 brew 'git'
 brew 'gh'
 brew 'prettier'
