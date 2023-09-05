@@ -26,9 +26,9 @@ if [ -e "$cr_state_success" ]; then
     exit 0
 fi
 
-if [ ! -x ${HOME}/.binenv/binenv ]; then
+if [ ! -x "$HOME/.binenv/binenv" ]; then
   BINENV_LATEST_DL=$(curl -sL https://api.github.com/repos/devops-works/binenv/releases/latest | jq --arg os "{{ .chezmoi.os }}_{{ .chezmoi.arch }}" -r '.assets[] | select(.name | test($os)) | .browser_download_url')
-  (curl -sLo /tmp/binenv $BINENV_LATEST_DL) || {
+  (curl -sLo /tmp/binenv "$BINENV_LATEST_DL") || {
     # Curl failed
     printf '%s\n' "FAIL :: curl ::  git.io/binenv :: /usr/local/bin :: $cr_script_sn/$LINENO"
 
