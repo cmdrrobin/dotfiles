@@ -23,7 +23,7 @@ readonly cr_state_success="$HOME/.config/chezmoi/state/$cr_script_sn"
 # Initial install state file definition
 readonly cr_initial_state="$HOME/.config/chezmoi/state/run_999_initial_install"
 
-{{ if eq .chezmoi.os "darwin" -}}
+{{ if eq .workspace "pde" -}}
 readonly repo=git@github.com:rgruyters/nvim.git
 {{ else -}}
 readonly repo=https://github.com/rgruyters/nvim.git
