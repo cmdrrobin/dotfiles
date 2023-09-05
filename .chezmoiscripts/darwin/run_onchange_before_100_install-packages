@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 ## Package installer for Mac
 
-exit 0
 # Fail-safe :: Return value of a pipeline is the value of the last (rightmost) 
 # command to exit with a non-zero status, or zero if all commands in the 
 # pipeline exit successfully
@@ -26,7 +25,7 @@ if [ -e "$cr_state_success" ]; then
 fi
 
 # Install Brew
-if [ ! -f "/usr/local/bin/brew" ]; then
+if [ ! -f "/usr/local/bin/brew" ] && [ ! -f "/opt/homebrew/bin/brew" ]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
