@@ -15,5 +15,5 @@
 
 {{- if eq .chezmoi.os "darwin" }}
 [data.homebrew]
-    path = "{{ $homebrew_prefix }}"
+    prefix = "{{ $homebrew_prefix }}"
 {{- end }}
