@@ -1,6 +1,7 @@
 {{- $git_email := promptString "email for git" -}}
 {{- $ssh_pub_key := promptString "SSH public key" -}}
 {{- $workspace := promptString "work space" -}}
+{{- $homebrew_prefix := env "HOMEBREW_PREFIX" -}}
 
 [edit]
     command = "nvim"
@@ -14,5 +15,5 @@
 
 {{- if eq .chezmoi.os "darwin" }}
 [data.homebrew]
-    path = {{ env "HOMEBREW_PREFIX" }}
+    path = "{{ $homebrew_prefix }}"
 {{- end }}
