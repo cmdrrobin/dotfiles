@@ -1,1 +1,1 @@
-font_size: {{ . }}
+font_size {{ . }}
