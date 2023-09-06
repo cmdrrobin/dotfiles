@@ -1,19 +1,14 @@
-{{- $git_email := promptString "email for git" -}}
-{{- $ssh_pub_key := promptString "SSH public key" -}}
-{{- $workspace := promptString "work space" -}}
-{{- $homebrew_prefix := env "HOMEBREW_PREFIX" -}}
-
 [edit]
     command = "nvim"
 
 [data]
-    workspace = "{{ $workspace }}"
+    workspace = {{ promptString "my workspace" | quote }}
 
 [data.git]
-    email = "{{ $git_email }}"
-    sign_key = "{{ $ssh_pub_key }}"
+    email = {{ promptString "email address for git" | quote }}
+    sign_key = {{ promptString "SSH public key" | quote }}
 
-{{- if eq .chezmoi.os "darwin" }}
+{{ if eq .chezmoi.os "darwin" -}}
 [data.homebrew]
-    prefix = "{{ $homebrew_prefix }}"
+    prefix = {{ env "HOMEBREW_PREFIX" | quote }}
 {{- end }}
