@@ -11,3 +11,8 @@
 [data.git]
     email = "{{ $git_email }}"
     sign_key = "{{ $ssh_pub_key }}"
+
+{{- if .chezmoi.os "darwin" }}
+[data.homebrew]
+    path = {{ env "HOMEBREW_PREFIX" }}
+{{- end }}
