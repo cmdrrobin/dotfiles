@@ -2,7 +2,7 @@
 # Set the correct fonts for the terminal. A list can be shown with:
 # kitty +list-fonts
 font_family JetBrains Mono
-{{ if .chezmoi.os "darwin" -}}
+{{ if eq .chezmoi.os "darwin" -}}
 font_size {{ template "kitty" 15 }}
 {{- else }}
 font_size {{ template "kitty" 11 }}
