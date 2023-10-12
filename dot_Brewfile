@@ -1,27 +1,31 @@
 tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 tap 'federico-terzi/espanso'
-tap 'hashicorp/tap'
 
 brew 'gnupg'
 brew 'gopass'
 brew 'pinentry-mac'
 brew 'watch'
 brew 'tmux'
+brew 'coreutils'
+brew 'openssl'
+brew 'espanso'
+brew 'homebrew/cask/espanso'
+
+# Yubikey related
 brew 'yubikey-personalization'
 brew 'hopenpgp-tools'
 brew 'ykman'
-brew 'coreutils'
-brew 'openssl'
 
 # Neovim related
 brew 'neovim'
 brew 'fzf'
+brew 'ripgrep'
 brew 'solargraph'
 
 # Develop tools
 brew 'jq'
-brew 'node@16'
+brew 'node'
 brew 'python3'
 cask 'miniconda'
 brew 'git'
@@ -30,12 +34,6 @@ brew 'prettier'
 brew 'shfmt'
 brew 'markdownlint-cli'
 brew 'shellcheck'
-brew 'flake8'
-brew 'black'
-
-# Hashistack
-brew 'hashicorp/tap/terraform-ls'
-brew 'hashicorp/tap/boundary'
 
 # Apps
 cask 'kitty'
