@@ -22,7 +22,6 @@ symbol = ' '
 
 [terraform]
 symbol = '󱁢 '
-detect_files = ['*.tf', '*.tfvars']
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
