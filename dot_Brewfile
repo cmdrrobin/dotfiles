@@ -9,7 +9,7 @@ brew 'watch'
 brew 'tmux'
 brew 'coreutils'
 brew 'openssl'
-brew 'espanso'
+brew 'starship'
 brew 'homebrew/cask/espanso'
 
 # Yubikey related

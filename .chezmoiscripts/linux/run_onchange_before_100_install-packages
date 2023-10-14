@@ -63,6 +63,9 @@ sudo apt install -y i3 i3status polybar kitty feh rofi
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 mkdir $HOME/bin && ln -nfs $HOME/.local/kitty.app/bin/kitty $HOME/bin/kitty
 
+# Starship
+curl -sS https://starship.rs/install.sh | sh
+
 # Install miniconda - https://docs.conda.io/en/latest/miniconda.html
 bash -c $(curl -sLO https://repo.anaconda.com/miniconda/Miniconda3-py310_23.5.2-0-Linux-x86_64.sh)
 

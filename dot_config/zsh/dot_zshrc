@@ -17,4 +17,8 @@ if [ ${#zsh_rc_if[@]} -gt 0 ]; then
     end
 fi
 
+export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
+
+eval "$(starship init zsh)"
+
 # vim: set ft=zsh
