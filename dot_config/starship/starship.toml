@@ -15,13 +15,14 @@ format = '[$symbol$context( \($namespace\))]($style) '
 format = '[ $version](bold cyan) '
 
 [directory]
-read_only = " 󰌾"
+read_only = ' 󰌾'
 
 [git_branch]
-symbol = " "
+symbol = ' '
 
 [terraform]
-symbol = "󱁢 "
+symbol = '󱁢 '
+detect_files = ['*.tf', '*.tfvars']
 
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
