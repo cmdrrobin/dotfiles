@@ -17,9 +17,9 @@ palette = "catppuccin_macchiato"
 add_newline = false
 
 [character]
-success_symbol = "[❯](bold red)" # ❯
-vicmd_symbol = "[\ue62b](green)" # 
-error_symbol = "[\uf467](red)"   # 
+success_symbol = "[❯](bold green)" # ❯
+vicmd_symbol = "[\ue62b](green)"   # 
+error_symbol = "[❯](bold red)"     # ❯
 
 [directory]
 read_only = " 󰌾"
