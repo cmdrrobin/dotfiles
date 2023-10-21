@@ -1,27 +1,77 @@
+# ███████╗████████╗ █████╗ ██████╗ ███████╗██╗  ██╗██╗██████╗
+# ██╔════╝╚══██╔══╝██╔══██╗██╔══██╗██╔════╝██║  ██║██║██╔══██╗
+# ███████╗   ██║   ███████║██████╔╝███████╗███████║██║██████╔╝
+# ╚════██║   ██║   ██╔══██║██╔══██╗╚════██║██╔══██║██║██╔═══╝
+# ███████║   ██║   ██║  ██║██║  ██║███████║██║  ██║██║██║
+# ╚══════╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝╚═╝
+# The minimal, blazing-fast, and infinitely customizable prompt
+# https://starship.rs
+
+# Get editor completions based on the config schema
+"$schema" = "https://starship.rs/config-schema.json"
+
+# Catppuccin all the way
+palette = "catppuccin_macchiato"
+
 # disable new line
 add_newline = false
 
-# Catppuccin all the way
-palette = 'catppuccin_macchiato'
-
-[kubernetes]
-symbol = '☸'
-disabled = false
-detect_files = ['k8s', 'Dockerfile']
-detect_extensions = ['yaml']
-format = '[$symbol$context( \($namespace\))]($style) '
-
-[golang]
-format = '[ $version](bold cyan) '
+[character]
+success_symbol = "[❯](bold red)" # ❯
+vicmd_symbol = "[\ue62b](green)" # 
+error_symbol = "[\uf467](red)"   # 
 
 [directory]
-read_only = ' 󰌾'
+read_only = " 󰌾"
 
 [git_branch]
-symbol = ' '
+symbol = " "
+
+[git_state]
+disabled = false
+rebase = "  rebasing"
+merge = "  merging"
+revert = " 󰕍 reverting"
+cherry_pick = "  picking"
+bisect = "bisecting"
+am = "am'ing"
+am_or_rebase = "am/rebase"
+
+[git_metrics]
+disabled = false
+
+[git_status]
+disabled = false
+stashed = "   ${count}"
+ahead = " 󰞙  ${count}"
+behind = " 󰞖  ${count}"
+diverged = " 󰓢 ${ahead_count} ${behind_count}"
+conflicted = "   ${count}"
+deleted = "   ${count}"
+renamed = " 󰗧 ${count}"
+modified = "   ${count}"
+staged = "   ${count}"
+untracked = " 󰧮 ${count}"
 
 [terraform]
-symbol = '󱁢 '
+symbol = "󱁢 "
+
+[kubernetes]
+symbol = "☸"
+disabled = false
+detect_extensions = ["yaml"]
+format = "[$symbol$context( ($namespace))]($style) "
+
+[golang]
+format = "[ $version](bold cyan) "
+
+[package]
+symbol = "󰏗 "
+disabled = true
+
+[docker_context]
+symbol = " "
+disabled = true
 
 [palettes.catppuccin_macchiato]
 rosewater = "#f4dbd6"
