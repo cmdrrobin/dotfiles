@@ -1,8 +1,16 @@
 README.md
-{{ if eq .chezmoi.os "darwin" -}}
+
+{{ if ne .chezmoi.os "darwin" }}
+.chezmoiscripts/darwin/**
+.Brewfile
+{{ end }}
+
+{{ if ne .chezmoi.os "linux" -}}
+.chezmoiscripts/linux/**
 .config/i3
 .config/i3status
 .config/polybar
 .config/rofi
+.local/share/rofi/themes
 .Xresources
 {{ end -}}
