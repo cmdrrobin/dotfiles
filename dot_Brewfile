@@ -11,6 +11,7 @@ brew 'coreutils'
 brew 'openssl'
 brew 'starship'
 brew 'homebrew/cask/espanso'
+brew 'zoxide'
 
 # Yubikey related
 brew 'yubikey-personalization'
