@@ -31,21 +31,6 @@ return {
                 harfbuzz_features = { "calt", "liga", "dlig", "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08" },
             })
         },
-
-        --
-        -- Bold (highlighting)
-        --
-        {
-            intensity = 'Bold',
-            italic = false,
-            font = wezterm.font({
-                family = "Monaspace Krypton",
-                weight = "Regular",
-                stretch = "Normal",
-                style = "Normal",
-                harfbuzz_features = { "calt", "liga", "dlig", "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08" },
-            })
-        },
     },
     color_scheme = scheme_for_appearance(wezterm.gui.get_appearance()),
     hide_tab_bar_if_only_one_tab = true,
