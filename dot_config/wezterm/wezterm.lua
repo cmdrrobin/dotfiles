@@ -1,4 +1,5 @@
-local wezterm = require 'wezterm'
+local wezterm = require("wezterm")
+local mux = wezterm.mux
 
 function scheme_for_appearance(appearance)
     if appearance:find "Dark" then
@@ -7,6 +8,12 @@ function scheme_for_appearance(appearance)
         return "Catppuccin Macchiato"
     end
 end
+
+-- maximize window on startup
+wezterm.on("gui-startup", function(cmd)
+  local tab, pane, window = mux.spawn_window(cmd or {})
+  window:gui_window():maximize()
+end)
 
 return {
     font = wezterm.font({
