@@ -29,7 +29,7 @@ end)
 -- Wezterm settings
 config.font = wezterm.font({
     family = "Monaspace Neon",
-    weight = "Medium",
+    weight = 600,
     stretch = "Normal",
     style = "Normal",
     harfbuzz_features = { "calt", "liga", "dlig", "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08" },
