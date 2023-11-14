@@ -26,17 +26,15 @@ brew 'solargraph'
 
 # Develop tools
 brew 'jq'
+brew 'yq'
 brew 'node'
 brew 'python3'
 brew 'git'
 brew 'gh'
-brew 'prettier'
-brew 'shfmt'
-brew 'markdownlint-cli'
-brew 'shellcheck'
 
 # Apps
 cask 'kitty'
+cask 'wezterm'
 cask '1password-cli'
 cask 'vmware-fusion'
 cask 'firefox'
@@ -45,5 +43,4 @@ cask 'google-chrome'
 # Fonts
 cask 'font-jetbrains-mono'
 cask 'font-symbols-only-nerd-font'
-cask 'font-jetbrains-mono-nerd-font'
-cask 'font-powerline-symbols'
+cask 'font-monaspace'
