@@ -20,28 +20,9 @@ end)
 
 -- Wezterm settings
 config.font = wezterm.font({
-    family = "Monaspace Neon",
+    family = "JetBrains Mono",
     weight = 600,
-    stretch = "Normal",
-    style = "Normal",
-    harfbuzz_features = { "calt", "liga", "dlig", "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08" },
 })
-config.font_rules = {
-    --
-    -- Italic (comments)
-    --
-    {
-        intensity = 'Normal',
-        italic = true,
-        font = wezterm.font({
-            family = "Monaspace Radon",
-            weight = "Regular",
-            stretch = "Normal",
-            style = "Normal",
-            harfbuzz_features = { "calt", "liga", "dlig", "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08" },
-        })
-    },
-}
 config.color_scheme = "Catppuccin Macchiato"
 config.hide_tab_bar_if_only_one_tab = true
 config.font_size = 15.0
