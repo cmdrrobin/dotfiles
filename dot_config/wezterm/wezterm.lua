@@ -29,4 +29,15 @@ config.font_size = 15.0
 config.line_height = 1.1
 config.window_decorations = "RESIZE"
 
+config.mouse_bindings = {
+    -- CTRL-click will open the link under the mouse cursor
+    {
+        event = {
+            Up = { streak = 1, button = 'Left' },
+        },
+        mods = 'CTRL',
+        acton = wezterm.action.OpenLinkAtMouseCursor,
+    },
+}
+
 return config
