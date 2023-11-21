@@ -36,7 +36,7 @@ config.mouse_bindings = {
             Up = { streak = 1, button = 'Left' },
         },
         mods = 'CTRL',
-        acton = wezterm.action.OpenLinkAtMouseCursor,
+        action = wezterm.action.OpenLinkAtMouseCursor,
     },
 }
 
