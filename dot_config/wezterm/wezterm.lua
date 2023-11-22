@@ -19,9 +19,15 @@ wezterm.on("gui-startup", function(cmd)
 end)
 
 -- Wezterm settings
-config.font = wezterm.font({
-    family = "JetBrains Mono",
-    weight = 600,
+config.font = wezterm.font_with_fallback({
+    {
+        family = "JetBrains Mono",
+        weight = 600,
+    },
+    {
+        family = "Symbols Nerd Font Mono",
+        scale = 0.75,
+    },
 })
 config.color_scheme = "Catppuccin Macchiato"
 config.hide_tab_bar_if_only_one_tab = true
