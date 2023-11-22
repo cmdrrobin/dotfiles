@@ -35,6 +35,9 @@ config.font_size = 15.0
 config.line_height = 1.1
 config.window_decorations = "RESIZE"
 
+-- Use the defaults as a base
+config.hyperlink_rules = wezterm.default_hyperlink_rules()
+
 config.mouse_bindings = {
     -- CTRL-click will open the link under the mouse cursor
     {
