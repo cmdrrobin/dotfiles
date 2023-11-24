@@ -25,8 +25,7 @@ config.font = wezterm.font_with_fallback({
         weight = 600,
     },
     {
-        family = "Symbols Nerd Font Mono",
-        scale = 0.75,
+        family = "Symbols Nerd Font",
     },
 })
 config.color_scheme = "Catppuccin Macchiato"
