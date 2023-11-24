@@ -5,7 +5,6 @@
 -- |__/|__/\___/ /___/\__/\___/_/  /_/ /_/ /_/ 
 
 local wezterm = require("wezterm")
-local mux = wezterm.mux
 
 local config = {}
 
@@ -14,11 +13,11 @@ if wezterm.config_builder then config = wezterm.config_builder() end
 
 -- maximize window on startup
 wezterm.on("gui-startup", function(cmd)
-  local tab, pane, window = mux.spawn_window(cmd or {})
+  local tab, pane, window = wezterm.mux.spawn_window(cmd or {})
   window:gui_window():maximize()
 end)
 
--- Wezterm settings
+-- define fonts with fallback
 config.font = wezterm.font_with_fallback({
     {
         family = "JetBrains Mono",
@@ -28,13 +27,19 @@ config.font = wezterm.font_with_fallback({
         family = "Symbols Nerd Font",
     },
 })
-config.color_scheme = "Catppuccin Macchiato"
-config.hide_tab_bar_if_only_one_tab = true
+-- font size
 config.font_size = 15.0
+-- add little bit of spacing between lines
 config.line_height = 1.1
+
+-- Set my favourite colour scheme
+config.color_scheme = "Catppuccin Macchiato"
+-- do not show tab bar when single tab is used
+config.hide_tab_bar_if_only_one_tab = true
+-- disable the title bar but enable the resizable border
 config.window_decorations = "RESIZE"
 
--- Use the defaults as a base
+-- define hyperlink rules
 config.hyperlink_rules = {
     -- Compiled-in default. Used if you don't specify any hyperlink_rules.
     {
@@ -51,6 +56,7 @@ config.hyperlink_rules = {
     },
 }
 
+-- define mouse actions bindings
 config.mouse_bindings = {
     -- CTRL-click will open the link under the mouse cursor
     {
@@ -63,3 +69,5 @@ config.mouse_bindings = {
 }
 
 return config
+
+-- vim: sw=4 sts=4 ts=4 ft=lua
