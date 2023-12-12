@@ -10,6 +10,7 @@ brew 'coreutils'
 brew 'openssl'
 brew 'starship'
 brew 'zoxide'
+brew 'slides'
 
 # Yubikey related
 brew 'yubikey-personalization'
