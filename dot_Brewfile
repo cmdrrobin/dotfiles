@@ -1,6 +1,5 @@
 tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
-tap 'federico-terzi/espanso'
 
 brew 'gnupg'
 brew 'gopass'
@@ -10,7 +9,6 @@ brew 'tmux'
 brew 'coreutils'
 brew 'openssl'
 brew 'starship'
-brew 'homebrew/cask/espanso'
 brew 'zoxide'
 
 # Yubikey related
