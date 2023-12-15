@@ -22,7 +22,7 @@ config.term = "wezterm"
 -- define fonts with fallback
 config.font = wezterm.font_with_fallback({
     {
-        family = "JetBrains Mono",
+        family = "Monaspace Neon",
         weight = 600,
     },
     {
