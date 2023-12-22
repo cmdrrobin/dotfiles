@@ -35,7 +35,7 @@ config.font_size = 15.0
 config.line_height = 1.2
 
 -- Set my favourite colour scheme
-config.color_scheme = "Catppuccin Macchiato"
+config.color_scheme = "Catppuccin Mocha"
 -- do not show tab bar when single tab is used
 config.hide_tab_bar_if_only_one_tab = true
 -- disable the title bar but enable the resizable border
