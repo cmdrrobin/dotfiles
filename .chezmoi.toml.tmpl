@@ -10,5 +10,5 @@
 
 {{ if eq .chezmoi.os "darwin" -}}
 [data.homebrew]
-    prefix = {{ env "HOMEBREW_PREFIX" | quote }}
+    prefix = "/opt/homebrew"
 {{- end }}

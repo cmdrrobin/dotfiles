@@ -4,6 +4,7 @@ default-cache-ttl 60
 max-cache-ttl 120
 {{ if eq .chezmoi.os "darwin" -}}
 pinentry-program {{ .homebrew.prefix }}/bin/pinentry-mac
-{{ else }}
+{{ end -}}
+{{ if eq .chezmoi.os "linux" -}}
 pinentry-program /usr/local/bin/pinentry-gnome3
 {{ end -}}
