@@ -11,6 +11,7 @@ brew 'openssl'
 brew 'starship'
 brew 'zoxide'
 brew 'slides'
+brew 'joshsmedeski/sesh/sesh'
 
 # Yubikey related
 brew 'yubikey-personalization'
