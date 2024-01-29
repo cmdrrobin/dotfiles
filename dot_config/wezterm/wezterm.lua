@@ -25,7 +25,7 @@ config.term = "wezterm"
 config.font = wezterm.font_with_fallback({
 	{
 		family = "Monaspace Neon",
-		weight = 600,
+		weight = 500,
 		stretch = "Normal",
 		style = "Normal",
 		harfbuzz_features = { "ss01", "ss02", "ss03", "ss04", "ss05", "ss06", "ss07", "ss08", "calt", "dlig" },
@@ -37,7 +37,9 @@ config.font = wezterm.font_with_fallback({
 -- font size
 config.font_size = 15.0
 -- add little bit of spacing between lines
-config.line_height = 1.4
+config.line_height = 1.5
+
+config.freetype_load_flags = "NO_HINTING"
 
 -- Set my favourite colour scheme
 config.color_scheme = "Catppuccin Mocha"
