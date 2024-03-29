@@ -37,9 +37,7 @@ config.font = wezterm.font_with_fallback({
 -- font size
 config.font_size = 15.0
 -- add little bit of spacing between lines
-config.line_height = 1.5
-
-config.freetype_load_flags = "NO_HINTING"
+config.line_height = 1.55
 
 -- Set my favourite colour scheme
 config.color_scheme = "Catppuccin Mocha"
