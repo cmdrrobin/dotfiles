@@ -1,6 +1,8 @@
 tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 
+brew 'bat'
+brew 'eza'
 brew 'gnupg'
 brew 'gopass'
 brew 'pinentry-mac'
