@@ -3,24 +3,28 @@
 This is my personal dotfiles repo. You may use it or get inspired by it.
 
 ```bash
-curl -sfL https://git.io/chezmoi | sh
-chezmoi init https://github.com/rgruyters/dotfiles.git
-chezmoi apply
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/rgruyters/dotfiles/main/install.sh)"
 ```
 
 ## Important links and information
+
+### Starship: The minimal, blazing-fast, and infinitely customizable prompt
+
+[Starship](https://starship.rs/)
+
+Currently the best customizable prompt for my zsh shell
 
 ### Catppuccin: theme and colouring for everyting
 
 [Catppuccin](https://github.com/catppuccin)
 
-My preferred color/theme for almost everything.
+My preferred color/theme for _almost_ everything.
 
-### Kitty: The fast, feature-rich, GPU based terminal emulator
+### Wezterm: a powerful cross-platform terminal emulator and multiplexer
 
-[Kitty](https://sw.kovidgoyal.net/kitty/)
+[Wezterm](https://wezfurlong.org/wezterm/)
 
-The perfect terminal for every OS.
+The perfect terminal for every OS written in Rust.
 
 ### tmux: the terminal multiplexer
 
