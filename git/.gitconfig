@@ -1,0 +1,31 @@
+[user]
+  name = Robin Gruyters
+  initials = rg
+  email = 2082795+rgruyters@users.noreply.github.com
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDwvos7+grPbpsi2YpmAUtHIVdluFOQsCoCh75MqXpzo
+
+[grep]
+  line-number = true
+
+[gpg]
+  program = gpg
+  format = ssh
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+  gpgsign = true
+
+[pull]
+  rebase = true
+
+[fetch]
+  prune = true
+  pruneTags = true
+
+[diff]
+  colorMoved = zebra
+
+[init]
+  defaultBranch = main

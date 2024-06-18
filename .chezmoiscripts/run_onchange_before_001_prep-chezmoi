@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-set -o pipefail
-
-set -u
-
-if [ ! -d "$HOME/.config/chezmoi/state" ]; then
-    mkdir -p $HOME/.config/chezmoi/state
-fi
