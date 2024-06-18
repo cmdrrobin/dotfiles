@@ -1,7 +1,0 @@
-{{ if ne .workspace "server" -}}
-# Export tty
-export GPG_TTY=$(tty)
-gpgconf --launch gpg-agent
-{{ end -}}
-
-# vim: ft=zsh
