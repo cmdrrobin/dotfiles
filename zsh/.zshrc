@@ -1,24 +1,20 @@
-#!/usr/bin/env zsh
-## .zshrc :: Z shell run commands
+# Created by Zap installer
+[ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 
-#
-## Z shell :: Run commands :: Includes
-source ~/.config/zsh/zshrc
+plug "zsh-users/zsh-autosuggestions"
+plug "zap-zsh/supercharge"
+plug "zsh-users/zsh-syntax-highlighting"
+plug "Aloxaf/fzf-tab"
+plug "zdharma-continuum/fast-syntax-highlighting"
 
-# Variable modification :: Z shell :: Run commands :: Include files
-zsh_rc_if=($ZSH/run_commands.d/*.zshrc)
-
-# Validation :: Determine if number of run commands include files exceeds 0
-if [ ${#zsh_rc_if[@]} -gt 0 ]; then
-    # Action :: Loop over Z shell run commands include files
-    foreach zshrc (`echo ${zsh_rc_if[@]} | sort`)
-        # Action :: Include Z shell run commands include files
-        source "$zshrc"
-    end
-fi
+# load local configs
+export ZSH="$HOME/.config/zsh"
+plug "$HOME/.config/zsh/run_commands.d/*"
 
 export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
 
 eval "$(starship init zsh)"
 
-# vim: set ft=zsh
+# Load and initialise completion system
+autoload -Uz compinit
+compinit
