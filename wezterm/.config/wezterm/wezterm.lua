@@ -19,8 +19,6 @@ wezterm.on('gui-startup', function(cmd)
   window:gui_window():maximize()
 end)
 
-config.term = 'wezterm'
-
 -- define fonts with fallback
 config.font = wezterm.font_with_fallback({
   {
