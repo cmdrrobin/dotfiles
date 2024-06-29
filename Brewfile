@@ -2,8 +2,6 @@ tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 
 brew 'bat'
-brew 'coreutils'
-brew 'eza'
 brew 'gnupg'
 brew 'gopass'
 brew 'joshsmedeski/sesh/sesh'
