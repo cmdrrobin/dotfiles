@@ -3,7 +3,6 @@
 
 plug "zsh-users/zsh-autosuggestions"
 plug "zap-zsh/supercharge"
-plug "zsh-users/zsh-syntax-highlighting"
 plug "Aloxaf/fzf-tab"
 plug "zdharma-continuum/fast-syntax-highlighting"
 
