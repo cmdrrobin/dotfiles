@@ -1,0 +1,45 @@
+#!/bin/bash
+
+ZETTELKASTEN=${ZETTELKASTEN:-"$HOME/zettelkasten"}
+
+# function to create and open a file in the specified directory
+open_file() {
+	# validate if directory exists
+	test -d $1 || exit 2
+
+	# create unique identifier for filename and link section
+	timestamp="$(date +"%Y%m%d%H%M")"
+
+	# create the file in the specified directory based on identifier and filename suffix
+	filename="${timestamp}-${filename_suffix}"
+	touch "$1/$filename.md"
+
+	# format the file
+	{
+		echo "# $title"
+		echo -en "\n"
+		echo -en "\n"
+		echo "Links:"
+		echo -en "\n"
+		echo "$timestamp"
+	} >>"$1/$filename.md"
+
+	# Open the file in Neovim
+	nvim "$1/$filename.md"
+}
+
+# prompt for usage
+if [[ $# -eq 0 ]]; then
+	echo "Usage: $0 <filename>"
+	exit 1
+fi
+
+# set title and filename suffix. Spaces are converted to hyphens
+if [[ $# -gt 0 ]]; then
+	title="$@"
+	filename_suffix=${title// /-}
+fi
+
+open_file "$ZETTELKASTEN/inbox"
+
+# vim: ft=bash

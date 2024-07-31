@@ -1,3 +1,5 @@
 --target=~
 --ignore=.stowrc
 --ignore=Brewfile
+--ignore=.git
+--ignore=scripts
