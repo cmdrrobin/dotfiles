@@ -4,6 +4,8 @@ echo "Installing dotfiles"
 
 if [ "$(uname)" == "Darwin" ]; then
     echo "Preparing OSX environment...."
+    curl -L https://nixos.org/nix/install | sh
+
     cp Brewfile $HOME/.Brewfile
 
     if [ ! -f "/usr/local/bin/brew" ] && [ ! -f "/opt/homebrew/bin/brew" ]; then
