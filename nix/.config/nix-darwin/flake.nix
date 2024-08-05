@@ -69,7 +69,18 @@
         dock.autohide = true;
         loginwindow.LoginwindowText = "Hello World 👋🏻";
         screencapture.location = "~/Pictures/Screenshots";
+        # TODO: get an error "Could not write domain com.apple.universalaccess; exiting"
+        # universalaccess.reduceMotion = true;
       };
+
+      # use capslock for escape key
+      system.keyboard = {
+        enableKeyMapping = true;
+        remapCapsLockToEscape = true;
+      };
+
+      # DANGER! When enabled, only fonts that is managed by Nix will be enabled
+      # fonts.fontDir.enable = false;
 
       # Homebrew needs to be installed on its own!
       homebrew.enable = true;
