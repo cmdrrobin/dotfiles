@@ -18,6 +18,7 @@
     configuration = { pkgs, ... }: {
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
+      # These packages are available system wide
       environment.systemPackages =
         [
             pkgs.neovim
@@ -58,8 +59,6 @@
       # enable Touch ID for sudo commands
       security.pam.enableSudoTouchIdAuth = true;
 
-      # My personal folder
-      users.users.robin.home = "/Users/robin";
       # home-manager.backupFileExtension = "backup";
       nix.configureBuildUsers = true;
       nix.useDaemon = true;
@@ -82,13 +81,6 @@
       # DANGER! When enabled, only fonts that is managed by Nix will be enabled
       # fonts.fontDir.enable = false;
 
-      # Homebrew needs to be installed on its own!
-      homebrew.enable = true;
-      homebrew.casks = [
-          "wezterm"
-          "raycast"
-      ];
-
       # Automatic Garbage Collection
       nix.gc = {
           automatic = true;
@@ -100,6 +92,20 @@
             }
           ];
           options = "--delete-older-than 7d";
+      };
+
+      # Homebrew needs to be installed on its own!
+      homebrew.enable = true;
+      homebrew.casks = [
+          "wezterm"
+          "raycast"
+          "monodraw"
+      ];
+
+      # My personal folder
+      users.users.robin = {
+        home = "/Users/robin";
+        shell = pkgs.zsh;
       };
     };
   in
