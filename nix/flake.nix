@@ -47,12 +47,30 @@
       # Create /etc/zshrc that loads the nix-darwin environment.
       programs.zsh.enable = true;  # default shell on catalina
 
-      # Set Git commit hash for darwin-version.
-      system.configurationRevision = self.rev or self.dirtyRev or null;
+      system = {
+        # Set Git commit hash for darwin-version.
+        configurationRevision = self.rev or self.dirtyRev or null;
 
-      # Used for backwards compatibility, please read the changelog before changing.
-      # $ darwin-rebuild changelog
-      system.stateVersion = 4;
+        # Used for backwards compatibility, please read the changelog before changing.
+        # $ darwin-rebuild changelog
+        stateVersion = 4;
+
+        # OSX specific configurations
+        defaults = {
+          dock.autohide = true;
+          loginwindow.LoginwindowText = "Hello World 👋🏻";
+          screencapture.location = "~/Pictures/Screenshots";
+          # TODO: get an error "Could not write domain com.apple.universalaccess; exiting"
+          # universalaccess.reduceMotion = true;
+        };
+
+        # use capslock for escape key
+        keyboard = {
+          enableKeyMapping = true;
+          remapCapsLockToEscape = true;
+        };
+      };
+
 
       # The platform the configuration will be used on
       nixpkgs.hostPlatform = "aarch64-darwin";
@@ -60,48 +78,37 @@
       # enable Touch ID for sudo commands
       security.pam.enableSudoTouchIdAuth = true;
 
-      # home-manager.backupFileExtension = "backup";
-      nix.configureBuildUsers = true;
-      nix.useDaemon = true;
+      nix = {
+        # home-manager.backupFileExtension = "backup";
+        configureBuildUsers = true;
+        useDaemon = true;
 
-      # OSX specific configurations
-      system.defaults = {
-        dock.autohide = true;
-        loginwindow.LoginwindowText = "Hello World 👋🏻";
-        screencapture.location = "~/Pictures/Screenshots";
-        # TODO: get an error "Could not write domain com.apple.universalaccess; exiting"
-        # universalaccess.reduceMotion = true;
+        # Automatic Garbage Collection
+        gc = {
+            automatic = true;
+            interval = [
+              {
+                Hour = 3;
+                Minute = 15;
+                Weekday = 7;
+              }
+            ];
+            options = "--delete-older-than 7d";
+        };
       };
 
-      # use capslock for escape key
-      system.keyboard = {
-        enableKeyMapping = true;
-        remapCapsLockToEscape = true;
-      };
-
-      # DANGER! When enabled, only fonts that is managed by Nix will be enabled
-      # fonts.fontDir.enable = false;
-
-      # Automatic Garbage Collection
-      nix.gc = {
-          automatic = true;
-          interval = [
-            {
-              Hour = 3;
-              Minute = 15;
-              Weekday = 7;
-            }
-          ];
-          options = "--delete-older-than 7d";
-      };
 
       # Homebrew needs to be installed on its own!
-      homebrew.enable = true;
-      homebrew.casks = [
-          "obsidian"
-          "tunnelblick"
-          "resilio-sync"
-      ];
+      homebrew = {
+        enable = true;
+        caskArgs.no_quarantine = true;
+        global.brewfile = true;
+        casks = [
+            "obsidian"
+            "tunnelblick"
+            "resilio-sync"
+        ];
+      };
 
       # My personal folder
       users.users.robin = {
@@ -125,9 +132,11 @@
       modules = [
           configuration
           home-manager.darwinModules.home-manager {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.robin = import ./home.nix;
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.robin = import ./home.nix;
+              };
           }
       ];
     };
