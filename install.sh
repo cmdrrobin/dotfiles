@@ -7,16 +7,15 @@ echo "     ||__|||__|||__|||__|||__|||__|||__|||__||"
 echo "     |/__\|/__\|/__\|/__\|/__\|/__\|/__\|/__\|"
 
 if [ "$(uname)" == "Darwin" ]; then
-    echo "Preparing OSX environment...."
+    echo "Preparing OSX environment..."
+    echo "Initiating Nix environment..."
     curl -L https://nixos.org/nix/install | sh
 
     echo "Installing Homebrew..."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-    pushd nix
-    nix build --extra-experimental-features "nix-command flakes" '.#darwin.Configurations.Robins-MacBook-Pro.system'
-    ./result/sw/bin/darwin-rebuild switch --flake '.#'
-    popd
+    echo "Initiating Nix Darwin..."
+    nix run nix-darwin --experimental-feature nix-command --experimental-feature flakes -- switch --flake nix
 fi
 
 echo "Installing nvim config"
