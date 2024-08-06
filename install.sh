@@ -10,6 +10,9 @@ if [ "$(uname)" == "Darwin" ]; then
     echo "Preparing OSX environment...."
     curl -L https://nixos.org/nix/install | sh
 
+    echo "Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
     pushd nix
     nix build --extra-experimental-features "nix-command flakes" '.#darwin.Configurations.Robins-MacBook-Pro.system'
     ./result/sw/bin/darwin-rebuild switch --flake '.#'
