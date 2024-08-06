@@ -15,7 +15,7 @@
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
   let
-    configuration = { pkgs, ... }: {
+    configuration = { pkgs, lib, ... }: {
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       # These packages are available system wide
@@ -34,6 +34,7 @@
             pkgs.lazygit
             pkgs.lazydocker
             pkgs.sesh
+            pkgs.wezterm
         ];
 
       # Auto upgrade nix package and the daemon service.
@@ -97,9 +98,9 @@
       # Homebrew needs to be installed on its own!
       homebrew.enable = true;
       homebrew.casks = [
-          "wezterm"
-          "raycast"
-          "monodraw"
+          "obsidian"
+          "tunnelblick"
+          "resilio-sync"
       ];
 
       # My personal folder
@@ -107,6 +108,13 @@
         home = "/Users/robin";
         shell = pkgs.zsh;
       };
+
+      # allow these packages to be installed. These packages may require to have a license or subscription
+      nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+        "raycast"
+        "1password-cli"
+      ];
+
     };
   in
   {

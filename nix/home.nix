@@ -10,8 +10,11 @@
     opentofu
     python3
     yq
+    _1password
     monaspace
+    jetbrains-mono
     (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+    raycast
   ];
 
   home.file = {
