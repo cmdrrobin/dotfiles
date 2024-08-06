@@ -108,6 +108,9 @@
             "tunnelblick"
             "resilio-sync"
         ];
+        masApps = {
+          Amphetamine = 937984704;
+        };
       };
 
       # My personal folder
