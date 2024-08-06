@@ -1,6 +1,10 @@
 #!/bin/bash
 
-echo "Installing dotfiles"
+
+echo "     ____ ____ ____ ____ ____ ____ ____ ____"
+echo "     ||D |||O |||T |||F |||I |||L |||E |||S ||"
+echo "     ||__|||__|||__|||__|||__|||__|||__|||__||"
+echo "     |/__\|/__\|/__\|/__\|/__\|/__\|/__\|/__\|"
 
 if [ "$(uname)" == "Darwin" ]; then
     echo "Preparing OSX environment...."
