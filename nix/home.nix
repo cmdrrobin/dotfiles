@@ -16,6 +16,7 @@
       jetbrains-mono
       (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
       raycast
+      vault
     ];
 
     file = {
@@ -36,6 +37,7 @@
       PAGER = "less -FirSwX";
       CLICOLOR = 1;
       STARSHIP_CONFIG = "$HOME/.config/starship/starship.toml";
+      SSH_AUTH_SOCK = "/Users/robin/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
     };
   };
 

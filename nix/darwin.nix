@@ -107,6 +107,7 @@
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "raycast"
     "1password-cli"
+    "vault"
   ];
 
 }
