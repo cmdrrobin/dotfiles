@@ -23,6 +23,9 @@
       modules = [
           ./darwin.nix
           home-manager.darwinModules.home-manager {
+              # allow these packages to be installed. These packages may require to have a license or subscription
+              nixpkgs.config.allowUnfree = true;
+              # configure users and their required configurations and packages
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;

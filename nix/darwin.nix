@@ -105,11 +105,4 @@
     shell = pkgs.zsh;
   };
 
-  # allow these packages to be installed. These packages may require to have a license or subscription
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "raycast"
-    "1password-cli"
-    "vault"
-  ];
-
 }
