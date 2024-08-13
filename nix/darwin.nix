@@ -91,9 +91,11 @@
       "obsidian"
       "tunnelblick"
       "resilio-sync"
+      "nikitabobko/tap/aerospace"
     ];
     masApps = {
       Amphetamine = 937984704;
+      Todoist = 585829637;
     };
   };
 
