@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-
+{ config, pkgs, lib, ... }:
 {
   home = {
     username = "robin";
@@ -23,7 +22,6 @@
       ".gitconfig".source = ../git/.gitconfig;
       ".config/wezterm".source = ../wezterm;
       ".config/starship".source = ../starship;
-      ".config/tmux".source = ../tmux;
     };
 
     sessionVariables = {
@@ -99,5 +97,10 @@
   programs.direnv = {
     enable = true;
     enableZshIntegration = true;
+  };
+
+  programs.tmux = {
+    enable = true;
+    extraConfig = builtins.readFile ../tmux/tmux.conf;
   };
 }
