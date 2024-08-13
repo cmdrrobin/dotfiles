@@ -63,7 +63,7 @@
   security.pam.enableSudoTouchIdAuth = true;
 
   nix = {
-    # home-manager.backupFileExtension = "backup";
+    home-manager.backupFileExtension = "backup";
     configureBuildUsers = true;
     useDaemon = true;
 
