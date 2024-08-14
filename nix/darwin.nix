@@ -63,7 +63,6 @@
   security.pam.enableSudoTouchIdAuth = true;
 
   nix = {
-    home-manager.backupFileExtension = "backup";
     configureBuildUsers = true;
     useDaemon = true;
 
@@ -105,4 +104,5 @@
     shell = pkgs.zsh;
   };
 
+  home-manager.backupFileExtension = "backup";
 }
