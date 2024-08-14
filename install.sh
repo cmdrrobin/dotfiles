@@ -15,7 +15,7 @@ if [ "$(uname)" == "Darwin" ]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
     echo "Initiating Nix Darwin..."
-    nix run nix-darwin --experimental-feature nix-command --experimental-feature flakes -- switch --flake nix
+    nix run nix-darwin --extra-experimental-features nix-command --extra-experimental-features flakes -- switch --flake '.#'
 fi
 
 echo "Installing nvim config"
