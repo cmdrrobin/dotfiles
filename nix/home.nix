@@ -16,6 +16,7 @@
       (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
       raycast
       vault
+      ollama
     ];
 
     file = {
