@@ -1,4 +1,4 @@
-{ self, pkgs, lib, ... }: {
+{ self, pkgs, lib, inputs, ... }: {
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   # These packages are available system wide
@@ -17,7 +17,8 @@
       pkgs.lazygit
       pkgs.lazydocker
       pkgs.sesh
-      pkgs.wezterm
+      inputs.wezterm-flake.packages.${pkgs.system}.default
+      # pkgs.wezterm
     ];
 
   # Auto upgrade nix package and the daemon service.

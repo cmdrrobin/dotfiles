@@ -11,9 +11,15 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # FIX: due to weird GPU issue
+    # https://github.com/wez/wezterm/issues/5990
+    wezterm-flake = {
+      url = "github:wez/wezterm/main?dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, wezterm-flake }:
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#Robins-MacBook-Pro
