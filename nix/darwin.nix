@@ -41,7 +41,7 @@
     # OSX specific configurations
     defaults = {
       dock.autohide = true;
-      loginwindow.LoginwindowText = "Hello World 👋🏻";
+      loginwindow.LoginwindowText = "I use Neovim btw ⌨️";
       screencapture.location = "~/Pictures/Screenshots"; # Save screenshots to defined folder
       NSGlobalDomain.ApplePressAndHoldEnabled = false; # Disable press and hold for diacritics
       # TODO: get an error "Could not write domain com.apple.universalaccess; exiting"
