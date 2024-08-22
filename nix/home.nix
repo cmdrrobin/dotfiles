@@ -6,17 +6,22 @@
     stateVersion = "24.05"; # Please read the comment before changing.
 
     packages = with pkgs; [
-      go
-      opentofu
-      python3
-      yq
       _1password
-      monaspace
+      gnupg
+      gh
+      go
+      gopass
       jetbrains-mono
+      monaspace
       (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+      nodejs_20
+      ollama
+      opentofu
+      pinentry-tty
+      python3
       raycast
       vault
-      ollama
+      yq
     ];
 
     file = {
