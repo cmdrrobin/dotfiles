@@ -4,21 +4,21 @@
   # These packages are available system wide
   environment.systemPackages =
     [
+      pkgs.bat
+      pkgs.direnv
+      pkgs.fd
+      pkgs.fzf
+      pkgs.git
+      pkgs.lazydocker
+      pkgs.lazygit
       pkgs.neovim
       pkgs.ripgrep
-      pkgs.fzf
-      pkgs.direnv
-      pkgs.bat
+      pkgs.sesh
       pkgs.starship
       pkgs.tmux
+      # inputs.wezterm-flake.packages.${pkgs.system}.default
+      pkgs.wezterm
       pkgs.zoxide
-      pkgs.fd
-      pkgs.git
-      pkgs.lazygit
-      pkgs.lazydocker
-      pkgs.sesh
-      inputs.wezterm-flake.packages.${pkgs.system}.default
-      # pkgs.wezterm
     ];
 
   # Auto upgrade nix package and the daemon service.

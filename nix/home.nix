@@ -12,6 +12,7 @@
       go
       gopass
       jetbrains-mono
+      jq
       monaspace
       (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
       nodejs_20
