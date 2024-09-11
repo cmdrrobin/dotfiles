@@ -19,6 +19,8 @@ wezterm.on('gui-startup', function(cmd)
   window:gui_window():maximize()
 end)
 
+config.front_end = 'WebGpu'
+
 -- define fonts with fallback
 config.font = wezterm.font_with_fallback({
   {
@@ -35,7 +37,7 @@ config.font = wezterm.font_with_fallback({
 -- font size
 config.font_size = 15.0
 -- add little bit of spacing between lines
-config.line_height = 1.55
+config.line_height = 1.58
 
 -- Set my favourite colour scheme
 config.color_scheme = 'Catppuccin Mocha'

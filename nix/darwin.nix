@@ -9,6 +9,7 @@
       pkgs.fd
       pkgs.fzf
       pkgs.git
+      pkgs.kitty
       pkgs.lazydocker
       pkgs.lazygit
       pkgs.neovim
@@ -16,8 +17,6 @@
       pkgs.sesh
       pkgs.starship
       pkgs.tmux
-      # inputs.wezterm-flake.packages.${pkgs.system}.default
-      pkgs.wezterm
       pkgs.zoxide
     ];
 
@@ -92,6 +91,7 @@
       "tunnelblick"
       "resilio-sync"
       "nikitabobko/tap/aerospace"
+      "whisky"
     ];
     masApps = {
       Amphetamine = 937984704;

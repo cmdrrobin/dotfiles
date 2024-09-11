@@ -27,7 +27,7 @@
 
     file = {
       ".gitconfig".source = ../git/.gitconfig;
-      ".config/wezterm".source = ../wezterm;
+      ".config/kitty".source = ../kitty;
       ".config/starship".source = ../starship;
     };
 
