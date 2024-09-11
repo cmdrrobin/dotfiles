@@ -1,3 +1,5 @@
+{ inputs }:
+
 { config, pkgs, lib, ... }:
 {
   home = {
@@ -21,6 +23,7 @@
       pinentry-tty
       python3
       raycast
+      tldr
       vault
       yq
     ];

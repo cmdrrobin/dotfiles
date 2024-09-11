@@ -29,7 +29,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.robin = import ./home.nix;
+                users.robin = import ./home.nix { inputs = inputs; };
               };
           }
       ];
