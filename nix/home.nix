@@ -23,6 +23,7 @@
       pinentry-tty
       python3
       raycast
+      rustup
       tldr
       vault
       yq
