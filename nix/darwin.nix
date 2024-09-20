@@ -6,6 +6,7 @@
     [
       pkgs.bat
       pkgs.direnv
+      pkgs.discord
       pkgs.fd
       pkgs.fzf
       pkgs.git
