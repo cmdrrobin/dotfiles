@@ -14,6 +14,7 @@
       pkgs.lazydocker
       pkgs.lazygit
       pkgs.neovim
+      pkgs.ollama
       pkgs.ripgrep
       pkgs.sesh
       pkgs.starship
@@ -80,7 +81,6 @@
       options = "--delete-older-than 7d";
     };
   };
-
 
   # Homebrew needs to be installed on its own!
   homebrew = {

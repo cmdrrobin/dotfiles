@@ -18,7 +18,6 @@
       monaspace
       (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
       nodejs_20
-      ollama
       opentofu
       pinentry-tty
       python3
@@ -65,6 +64,10 @@
       vim = "nvim";
       s = "sesh connect \$(sesh list | fzf)";
     };
+
+    initExtra = ''
+      source /Users/robin/.config/op/plugins.sh
+    '';
 
     plugins = [
       {
