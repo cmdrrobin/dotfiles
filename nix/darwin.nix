@@ -1,4 +1,4 @@
-{ self, pkgs, lib, inputs, ... }: {
+{ self, config, pkgs, lib, inputs, ... }: {
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   # These packages are available system wide
@@ -107,4 +107,21 @@
   };
 
   home-manager.backupFileExtension = "backup";
+
+  # HACK: Use custom launchd for Ollama
+  # Currently not available for nix-darin
+  # https://github.com/LnL7/nix-darwin/pull/972
+  launchd.user.agents.ollama = {
+    path = [ config.environment.systemPath ];
+
+    serviceConfig = {
+      KeepAlive = true;
+      RunAtLoad = true;
+      ProgramArguments = [ "${pkgs.ollama}/bin/ollama" "serve" ];
+
+      EnvironmentVariables = {
+        OLLAMA_HOST = "127.0.0.1:11434";
+      };
+    };
+  };
 }
