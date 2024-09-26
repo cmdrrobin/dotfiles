@@ -26,6 +26,7 @@
       tldr
       vault
       yq
+      zig
     ];
 
     file = {

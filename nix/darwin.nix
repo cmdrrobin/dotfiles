@@ -42,18 +42,39 @@
 
     # OSX specific configurations
     defaults = {
-      dock.autohide = true;
       loginwindow.LoginwindowText = "I use Neovim btw ⌨️";
       screencapture.location = "~/Pictures/Screenshots"; # Save screenshots to defined folder
-      NSGlobalDomain.ApplePressAndHoldEnabled = false; # Disable press and hold for diacritics
+
       # TODO: get an error "Could not write domain com.apple.universalaccess; exiting"
       # universalaccess.reduceMotion = true;
+
+      NSGlobalDomain = {
+          # Replace press-and-hold with key repeat
+          ApplePressAndHoldEnabled = false;
+
+          # Expand save panel by default
+          NSNavPanelExpandedStateForSaveMode = true;
+
+          # Save to local disk by default (disable iCloud save)
+          NSDocumentSaveNewDocumentsToCloud = false;
+
+          # Disable automatic window animations
+          NSAutomaticWindowAnimationsEnabled = false;
+      };
+
+      dock = {
+          # Automatically show and hide the dock
+          autohide = true;
+      };
     };
 
     # use capslock for escape key
     keyboard = {
       enableKeyMapping = true;
       remapCapsLockToEscape = true;
+    };
+
+    defaults = {
     };
   };
 
