@@ -18,7 +18,7 @@ add_newline = false
 
 [character]
 success_symbol = "[❯](bold green)" # ❯
-vicmd_symbol = "[\ue62b](green)"   # 
+vimcmd_symbol = "[\ue62b](green)"  # 
 error_symbol = "[❯](bold red)"     # ❯
 
 [directory]
