@@ -23,6 +23,7 @@
       python3
       raycast
       rustup
+      terraform
       timer
       tldr
       vault
