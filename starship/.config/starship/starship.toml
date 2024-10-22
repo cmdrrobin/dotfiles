@@ -16,13 +16,39 @@ palette = "catppuccin_macchiato"
 # disable new line
 add_newline = false
 
+format = """
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$direnv\
+$env_var\
+$sudo\
+$cmd_duration\
+$line_break\
+$jobs\
+$battery\
+$time\
+$status\
+$os\
+$container\
+$shell\
+$character
+"""
+
+right_format = "$all"
+
 [character]
-success_symbol = "[❯](bold green)" # ❯
-vicmd_symbol = "[\ue62b](green)"   # 
-error_symbol = "[❯](bold red)"     # ❯
+vimcmd_symbol = "[\ue62b](green)" # 
 
 [directory]
 read_only = " 󰌾"
+
+[docker_context]
+symbol = " "
+disabled = true
 
 [git_branch]
 symbol = " "
@@ -40,18 +66,8 @@ am_or_rebase = "am/rebase"
 [git_metrics]
 disabled = false
 
-[git_status]
-disabled = false
-stashed = "   ${count}"
-ahead = " 󰞙  ${count}"
-behind = " 󰞖  ${count}"
-diverged = " 󰓢 ${ahead_count} ${behind_count}"
-conflicted = "   ${count}"
-deleted = "   ${count}"
-renamed = " 󰗧 ${count}"
-modified = "   ${count}"
-staged = "   ${count}"
-untracked = " 󰧮 ${count}"
+[golang]
+format = "[ $version](bold cyan) "
 
 [terraform]
 symbol = "󱁢 "
@@ -62,15 +78,8 @@ disabled = false
 detect_extensions = ["yaml"]
 format = "[$symbol$context( ($namespace))]($style) "
 
-[golang]
-format = "[ $version](bold cyan) "
-
 [package]
 symbol = "󰏗 "
-disabled = true
-
-[docker_context]
-symbol = " "
 disabled = true
 
 [palettes.catppuccin_macchiato]
