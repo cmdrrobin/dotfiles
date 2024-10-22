@@ -5,19 +5,13 @@ brew 'bat'
 brew 'gnupg'
 brew 'gopass'
 brew 'joshsmedeski/sesh/sesh'
-brew 'openssl'
 brew 'pinentry-mac'
 brew 'slides'
 brew 'starship'
-brew 'tlrc'
+brew 'tldr'
 brew 'tmux'
 brew 'watch'
 brew 'zoxide'
-
-# Yubikey related
-brew 'hopenpgp-tools'
-brew 'ykman'
-brew 'yubikey-personalization'
 
 # Neovim related
 brew 'fd'
@@ -30,15 +24,14 @@ brew 'gh'
 brew 'git'
 brew 'jq'
 brew 'yq'
-brew 'lazydocker'
 brew 'lazygit'
 brew 'node'
-brew 'python@3.12'
+brew 'python@3.13'
 
 # Apps
 cask '1password-cli'
 cask 'arc'
-cask 'wezterm'
+cask 'kitty'
 
 # Fonts
 cask 'font-jetbrains-mono'
