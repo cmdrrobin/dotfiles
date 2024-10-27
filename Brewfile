@@ -3,6 +3,7 @@ tap 'homebrew/cask-fonts'
 
 brew 'antidote'
 brew 'bat'
+brew 'direnv'
 brew 'gnupg'
 brew 'gopass'
 brew 'joshsmedeski/sesh/sesh'
