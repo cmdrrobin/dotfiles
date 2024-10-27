@@ -1,4 +1,4 @@
-zsh/bundles.zsh
+zsh/.config/zsh/bundles.zsh
 zsh/.config/zsh/plugins
 zsh/.config/zsh/.zsh_history
 tmux/.config/tmux/plugins

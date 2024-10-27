@@ -1,12 +1,18 @@
+export ZSH="$HOME/.config/zsh"
+
 # Homebrew
 export PATH=/opt/homebrew/bin:$PATH
 
 # import Brew shell configurations and environment settings
 eval "$(brew shellenv)"
 
+# Load and initialise completion system
+autoload -Uz compinit
+compinit
+
 # Antidote
 source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
-antidote load ~/dotfiles/zsh/bundles
+antidote load ~/.config/zsh/bundles
 
 typeset -U path cdpath fpath manpath
 
@@ -92,7 +98,3 @@ SAVEHIST="10000"
 
 HISTFILE="$HOME/.zsh_history"
 mkdir -p "$(dirname "$HISTFILE")"
-
-# Load and initialise completion system
-autoload -Uz compinit
-compinit
