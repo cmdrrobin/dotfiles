@@ -44,6 +44,8 @@ right_format = "$all"
 vimcmd_symbol = "[\ue62b](green)" # 
 
 [directory]
+truncation_length = 25
+truncate_to_repo = false
 read_only = " 󰌾"
 
 [docker_context]
@@ -67,10 +69,8 @@ am_or_rebase = "am/rebase"
 disabled = false
 
 [golang]
+disabled = true
 format = "[ $version](bold cyan) "
-
-[terraform]
-symbol = "󱁢 "
 
 [kubernetes]
 symbol = "☸"
@@ -78,9 +78,15 @@ disabled = false
 detect_extensions = ["yaml"]
 format = "[$symbol$context( ($namespace))]($style) "
 
-[package]
-symbol = "󰏗 "
+[lua]
 disabled = true
+
+[package]
+disabled = true
+symbol = "󰏗 "
+
+[terraform]
+symbol = "󱁢 "
 
 [palettes.catppuccin_macchiato]
 rosewater = "#f4dbd6"
