@@ -1,61 +1,47 @@
+# Homebrew
 export PATH=/opt/homebrew/bin:$PATH
 
 # import Brew shell configurations and environment settings
 eval "$(brew shellenv)"
 
-# Created by Zap installer
-[ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
+# Antidote
+source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
+antidote load ~/dotfiles/zsh/bundles
 
 typeset -U path cdpath fpath manpath
 
-plug "zsh-users/zsh-autosuggestions"
-plug "Aloxaf/fzf-tab"
-plug "zdharma-continuum/fast-syntax-highlighting"
+# Vi mode config
+#
+# Enable zsh's built-in vi mode
+bindkey -v
 
-# History
-HISTSIZE="10000"
-SAVEHIST="10000"
+# Bring back some non-vi defaults
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+bindkey '^a' beginning-of-line
+bindkey '^e' end-of-line
 
-HISTFILE="$HOME/.zsh_history"
-mkdir -p "$(dirname "$HISTFILE")"
+# Fuzzy Finder
+eval "$(fzf --zsh)"
 
-setopt HIST_FCNTL_LOCK
-unsetopt APPEND_HISTORY
-setopt HIST_IGNORE_DUPS
-unsetopt HIST_IGNORE_ALL_DUPS
-setopt HIST_IGNORE_SPACE
-unsetopt HIST_EXPIRE_DUPS_FIRST
-setopt SHARE_HISTORY
-unsetopt EXTENDED_HISTORY
+local fzf_default_opts=(
+  '--preview-window right:50%:noborder:hidden'
+  '--color=fg:#908caa,bg:#232136,hl:#ea9a97'
+  '--color=fg+:#e0def4,bg+:#393552,hl+:#ea9a97'
+  '--color=border:#44415a,header:#3e8fb0,gutter:#232136'
+  '--color=spinner:#f6c177,info:#9ccfd8'
+  '--color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa'
+  '--multi'
+  '--bind "alt-p:toggle-preview"'
+)
 
-# Fuzzy find
-if [[ $options[zle] = on ]]; then
-  eval "$(fzf --zsh)"
+export FZF_DEFAULT_OPTS="${fzf_default_opts[*]}"
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
 
-  export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
-  export FZF_DEFAULT_OPTS=" \
-    --color=fg:#908caa,bg:#232136,hl:#ea9a97 \
-    --color=fg+:#e0def4,bg+:#393552,hl+:#ea9a97 \
-    --color=border:#44415a,header:#3e8fb0,gutter:#232136 \
-    --color=spinner:#f6c177,info:#9ccfd8 \
-    --color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa --multi"
-  export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
-
-  # Advanced customization of fzf options via _fzf_comprun function
-  # - The first argument to the function is the name of the command.
-  # - You should make sure to pass the rest of the arguments to fzf.
-  _fzf_comprun() {
-    local command=$1
-    shift
-  
-    case "$command" in
-      cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
-      export|unset) fzf --preview "eval 'echo \$'{}"         "$@" ;;
-      ssh)          fzf --preview 'dig {}'                   "$@" ;;
-      *)            fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
-    esac
-  }
-fi
+# allow fzf-tab follow default opts
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
 # Starship prompt
 export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
@@ -99,7 +85,14 @@ export EDITOR="nvim";
 export PAGER="less -FirSwX";
 export CLICOLOR=1;
 export SSH_AUTH_SOCK="/Users/robin/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
-#
+
+# History
+HISTSIZE="10000"
+SAVEHIST="10000"
+
+HISTFILE="$HOME/.zsh_history"
+mkdir -p "$(dirname "$HISTFILE")"
+
 # Load and initialise completion system
 autoload -Uz compinit
 compinit
