@@ -1,6 +1,7 @@
 tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 
+brew 'antidote'
 brew 'bat'
 brew 'gnupg'
 brew 'gopass'
@@ -23,15 +24,19 @@ brew 'ripgrep'
 brew 'gh'
 brew 'git'
 brew 'jq'
-brew 'yq'
 brew 'lazygit'
 brew 'node'
 brew 'python@3.13'
+brew 'yq'
 
 # Apps
 cask '1password-cli'
 cask 'arc'
+cask 'discord'
 cask 'kitty'
+cask 'obsidian'
+cask 'raycast'
+cask 'whisky'
 
 # Fonts
 cask 'font-jetbrains-mono'
