@@ -6,6 +6,12 @@
 
 local wezterm = require('wezterm')
 
+-- maximize window on startup
+wezterm.on('gui-startup', function(cmd)
+  local _, _, window = wezterm.mux.spawn_window(cmd or {})
+  window:gui_window():maximize()
+end)
+
 local config = {}
 
 -- Use config builder object if possible
@@ -13,34 +19,35 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
--- maximize window on startup
-wezterm.on('gui-startup', function(cmd)
-  local tab, pane, window = wezterm.mux.spawn_window(cmd or {})
-  window:gui_window():maximize()
-end)
+-- overwrite terminal settings for better support of images in terminal
+config.term = 'xterm-kitty'
+config.enable_kitty_graphics = true
 
--- define fonts with fallback
+-- normally prefer Catppuccin Mocha, but use Rose Pine for now...
+config.color_scheme = 'rose-pine'
+
+-- My preferred font (with fallback)
 config.font = wezterm.font_with_fallback({
   {
     family = 'Monaspace Neon',
-    weight = 500,
+    weight = 400,
     stretch = 'Normal',
     style = 'Normal',
-    harfbuzz_features = { 'calt', 'liga', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08' },
+    harfbuzz_features = { 'calt', 'liga' },
   },
   {
     family = 'Symbols Nerd Font',
   },
 })
--- font size
-config.font_size = 15.0
--- add little bit of spacing between lines
-config.line_height = 1.55
 
--- Set my favourite colour scheme
-config.color_scheme = 'Catppuccin Mocha'
+-- nice big font size. (or I am getting old...)
+config.font_size = 16.5
+config.line_height = 1.5
+config.underline_position = -5
+
 -- do not show tab bar when single tab is used
 config.hide_tab_bar_if_only_one_tab = true
+config.adjust_window_size_when_changing_font_size = false
 -- disable the title bar but enable the resizable border
 config.window_decorations = 'RESIZE'
 
@@ -61,18 +68,4 @@ config.hyperlink_rules = {
   },
 }
 
--- define mouse actions bindings
-config.mouse_bindings = {
-  -- CTRL-click will open the link under the mouse cursor
-  {
-    event = {
-      Up = { streak = 1, button = 'Left' },
-    },
-    mods = 'CTRL',
-    action = wezterm.action.OpenLinkAtMouseCursor,
-  },
-}
-
 return config
-
--- vim: sw=4 sts=4 ts=4 ft=lua
