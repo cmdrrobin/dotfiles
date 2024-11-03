@@ -12,25 +12,16 @@ wezterm.on('gui-startup', function(cmd)
   window:gui_window():maximize()
 end)
 
-local config = {}
+-- This will hold the configuration.
+local config = wezterm.config_builder()
 
--- Use config builder object if possible
-if wezterm.config_builder then
-  config = wezterm.config_builder()
-end
-
--- overwrite terminal settings for better support of images in terminal
 config.term = 'xterm-kitty'
 config.enable_kitty_graphics = true
-
--- normally prefer Catppuccin Mocha, but use Rose Pine for now...
 config.color_scheme = 'rose-pine'
-
--- My preferred font (with fallback)
 config.font = wezterm.font_with_fallback({
   {
     family = 'Monaspace Neon',
-    weight = 400,
+    weight = 500,
     stretch = 'Normal',
     style = 'Normal',
     harfbuzz_features = { 'calt', 'liga' },
@@ -39,8 +30,6 @@ config.font = wezterm.font_with_fallback({
     family = 'Symbols Nerd Font',
   },
 })
-
--- nice big font size. (or I am getting old...)
 config.font_size = 16.5
 config.line_height = 1.5
 config.underline_position = -5
