@@ -42,11 +42,13 @@ if [ "$(uname)" == "Darwin" ]; then
     # map capslock to escape
     hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":30064771129,"HIDKeyboardModifierMappingDst":30064771113}]}'
     # autohide dock and restart Dock process
-    defaults write com.apple.dock autohide 1 && killall Dock
+    defaults write com.apple.dock autohide -bool "true" && killall Dock
+    # remove old items after 30 days
+    defaults write com.apple.finder FXRemoveOldTrashItems -bool "true" && killall Finder
 fi
 
 echo "Stowing my configuration files"
-stow */
+stow */ -t ~
 
 echo "Installing nvim config"
-git clone git@github.com:rgruyters/nvim.git $HOME/.config/nvim
+git clone https://github.com/rgruyters/nvim.git $HOME/.config/nvim
