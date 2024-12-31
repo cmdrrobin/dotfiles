@@ -17,7 +17,9 @@ local config = wezterm.config_builder()
 
 config.term = 'xterm-kitty'
 config.enable_kitty_graphics = true
+
 config.color_scheme = 'rose-pine'
+
 config.font = wezterm.font_with_fallback({
   {
     family = 'Monaspace Neon',
@@ -30,7 +32,7 @@ config.font = wezterm.font_with_fallback({
     family = 'Symbols Nerd Font',
   },
 })
-config.font_size = 16.5
+config.font_size = 15.5
 config.line_height = 1.5
 config.underline_position = -5
 
