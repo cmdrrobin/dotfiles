@@ -1,0 +1,35 @@
+theme = rose-pine
+
+# Selection Colors
+selection-foreground = #191724
+selection-background = #9ccfd8
+
+# Fonts and Font settings
+font-family = Monaspace Neon Var
+font-family = Symbols Nerd Font Mono
+
+font-feature = calt
+
+font-size = 16
+
+# Line height
+adjust-cell-height = 65%
+adjust-cursor-height = 65%
+adjust-underline-position = 15%
+adjust-font-baseline = 9%
+
+# Windows
+macos-titlebar-style = hidden
+window-width = 140
+window-height = 30
+window-padding-y = 8
+window-padding-x = 8
+
+# Clipboard settings
+clipboard-read = allow
+clipboard-write = allow
+
+copy-on-select = true
+
+# Allow option to work as alt on macos
+macos-option-as-alt = true
