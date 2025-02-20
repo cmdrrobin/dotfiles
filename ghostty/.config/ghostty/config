@@ -12,6 +12,8 @@ font-feature = calt
 
 font-size = 16
 
+font-style = SemiBold
+
 # Line height
 adjust-cell-height = 65%
 adjust-cursor-height = 65%
