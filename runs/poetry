@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [ $(uname) == "Linux" ]; then
+    echo "Download and install Poetry..."
+
+    curl -sSL https://install.python-poetry.org | python3 -
+fi
+
+# vi: ft=bash

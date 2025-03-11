@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [ $(uname) == "Linux" ]; then
+    echo "Installing Zoxide..."
+
+    curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+fi
+
+# vi: ft=bash

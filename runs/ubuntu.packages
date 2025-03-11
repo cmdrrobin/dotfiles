@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+SCRIPT_DIR=${SCRIPT_DIR-"../"}
+
+source /etc/lsb-release
+
+if [ $(uname) == "Linux" ] && [ ${DISTRIB_ID,,} == "ubuntu" ]; then
+    # install required packages for Ubuntu
+    apt update
+    cat $SCRIPT_DIR/packages.ubuntu.txt | xargs apt install -y
+
+    # Installing Ghostty Terminal
+    snap install ghostty --classic
+fi
+
+# vi: ft=bash

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+SCRIPT_DIR=${SCRIPT_DIR-"../"}
+
+source /etc/lsb-release
+
+if [ $(uname) == "Linux" ] && [ ${DISTRIB_ID,,} == "redhat" ]; then
+    echo "Running from ${SCRIPT_DIR}"
+fi
+
+# vi: ft=bash

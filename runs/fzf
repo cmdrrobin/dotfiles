@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+VERSION="v0.60.3"
+INSTALLER_DIR="$HOME/.fzf"
+
+if [ $(uname) == "Linux" ]; then
+    echo "Installing FZF version $VERSION..."
+
+    if [ ! -d $INSTALLER_DIR ]; then
+        git clone -depth 1 https://github.com/junegunn/fzf.git $INSTALLER_DIR
+    fi
+
+    git -C $INSTALLER_DIR checkout $VERSION
+    ${INSTALLER_DIR}/install --bin --no-update-rc
+fi
+
+# vi: ft=bash

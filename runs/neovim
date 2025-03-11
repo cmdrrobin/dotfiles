@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+VERSION="0.10.2"
+INSTALLER_DIR="$HOME/code/neovim"
+
+if [ $(uname) == "Linux" ]; then
+    echo "Installing Neovim version $VERSION..."
+
+    if [ ! -d $INSTALLER_DIR ]; then
+        git clone https://github.com/neovim/neovim.git $INSTALLER_DIR
+    fi
+
+    git -C $INSTALLER_DIR fetch --all
+    git -C $INSTALLER_DIR checkout $VERSION
+
+    make -C $INSTALLER_DIR clean
+    make -C $INSTALLER_DIR CMAKE_BUILD_TYPE=RelWithDebInfo
+    sudo make -C $INSTALLER_DIR install
+fi
+
+# vi: ft=bash

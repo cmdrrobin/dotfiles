@@ -29,6 +29,7 @@ brew 'git'
 brew 'jq'
 brew 'lazygit'
 brew 'node'
+brew 'poetry'
 brew 'python@3.13'
 brew 'yq'
 
