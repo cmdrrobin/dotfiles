@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [ $(uname) == "Linux" ]; then
+    echo "Downloading and installing sesh..."
+    go install github.com/joshmedeski/sesh/v2@latest
+fi
+
+# vi: ft=bash
