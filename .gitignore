@@ -1,5 +1,5 @@
 .DS_Store
-zsh/.config/zsh/bundles.zsh
-zsh/.config/zsh/plugins
-zsh/.config/zsh/.zsh_history
-tmux/.config/tmux/plugins
+configs/dot-config/zsh/bundles.zsh
+configs/dot-config/zsh/plugins
+configs/dot-config/zsh/.zsh_history
+configs/dot-config/tmux/plugins

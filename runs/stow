@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+echo "Stowing my configuration files"
+stow -vSt ~ --dotfiles configs
+
+# vi: ft=bash
