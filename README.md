@@ -2,8 +2,14 @@
 
 This is my personal dotfiles repo. You may use it or get inspired by it.
 
+## Usage
+
+Clone this repo and run the installer:
+
 ```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/rgruyters/dotfiles/main/install.sh)"
+git clone https://github.com/rgruyters/dotfiles.git $HOME/dotfiles
+cd $HOME/dotfiles
+./install.sh
 ```
 
 ## Important links and information
@@ -14,17 +20,17 @@ This is my personal dotfiles repo. You may use it or get inspired by it.
 
 Currently the best customizable prompt for my zsh shell
 
-### Catppuccin: theme and colouring for everyting
+### Rose Pine: theme and colouring for everyting
 
-[Catppuccin](https://github.com/catppuccin)
+[Rose Pine](https://github.com/rose-pine)
 
 My preferred color/theme for _almost_ everything.
 
-### Wezterm: a powerful cross-platform terminal emulator and multiplexer
+### Ghostty: fast, feature-rich, and cross-platform terminal emulator
 
-[Wezterm](https://wezfurlong.org/wezterm/)
+[Ghostty](https://ghostty.org)
 
-The perfect terminal for every OS written in Rust.
+The perfect terminal for every OS written in Zig.
 
 ### tmux: the terminal multiplexer
 
