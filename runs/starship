@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [ $(uname) == "Linux" ]; then
+    echo "Downloading and install starship..."
+    curl -sS https://starship.rs/install.sh | sh
+fi
+
+# vi: ft=bash

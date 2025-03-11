@@ -16,5 +16,3 @@ stow
 tldr
 tmux
 xclip
-zoxide
-zoxide
