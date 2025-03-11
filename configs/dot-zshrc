@@ -31,6 +31,7 @@ bindkey '^e' end-of-line
 # Fuzzy Finder
 eval "$(fzf --zsh)"
 
+# Define FZF options and theme colouring
 local fzf_default_opts=(
   '--preview-window right:50%:noborder:hidden'
   '--color=fg:#908caa,bg:#232136,hl:#ea9a97'
@@ -57,7 +58,7 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
 # 1Password
-source /Users/robin/.config/op/plugins.sh
+[[ -e $HOME/.config/op/plugins.sh ]] && source /Users/robin/.config/op/plugins.sh
 
 # Aliases
 alias -- s='sesh connect $(sesh list | fzf)'
@@ -101,5 +102,7 @@ mkdir -p "$(dirname "$HISTFILE")"
 
 # Nodejs
 export PATH="/opt/homebrew/opt/node@20/bin:$PATH"
-# export LDFLAGS="-L/opt/homebrew/opt/node@20/lib"
-# export CPPFLAGS="-I/opt/homebrew/opt/node@20/include"
+
+# NOTE: When local zshrc file exists, source it!
+# This is used when some settings shouldn't be managed by git (or my dotfiles)
+[[ -e $HOME/.zshrc-local ]] && source $HOME/.zshrc-local
