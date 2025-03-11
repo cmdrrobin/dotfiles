@@ -2,7 +2,10 @@
 
 if [ $(uname) == "Linux" ]; then
     echo "Downloading and installing sesh..."
-    go install github.com/joshmedeski/sesh/v2@latest
+    GO=$(which go)
+    [[ $? -eq 1 ]] && GO="/usr/local/bin/go"
+
+    $GO install github.com/joshmedeski/sesh/v2@latest
 fi
 
 # vi: ft=bash

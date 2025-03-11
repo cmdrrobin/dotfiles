@@ -105,7 +105,10 @@ export PATH="/opt/homebrew/opt/node@20/bin:$PATH"
 
 # Go
 [[ -d /usr/local/go ]] && export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/go/bin
 
 # NOTE: When local zshrc file exists, source it!
 # This is used when some settings shouldn't be managed by git (or my dotfiles)
 [[ -e $HOME/.zshrc-local ]] && source $HOME/.zshrc-local
+
+# vim: ft=zsh
