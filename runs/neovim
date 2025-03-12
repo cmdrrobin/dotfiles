@@ -18,4 +18,7 @@ if [ $(uname) == "Linux" ]; then
     sudo make -C $INSTALLER_DIR install
 fi
 
+echo "Downloading my Neovim config..."
+[[ ! -d $HOME/.config/nvim ]] && git clone https://github.com/rgruyters/nvim.git $HOME/.config/nvim
+
 # vi: ft=bash
