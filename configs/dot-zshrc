@@ -1,18 +1,30 @@
+# Basic variables
 export ZSH="$HOME/.config/zsh"
-
-# Homebrew
-export PATH=/opt/homebrew/bin:$PATH
+export XDG_CONFIG_HOME="$HOME/.config";
+export XDG_DATA_HOME="$HOME/.local/share";
+export XDG_CACHE_HOME="$HOME/.cache";
 
 # import Brew shell configurations and environment settings
-eval "$(brew shellenv)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Homebrew
+export PATH=$HOMEBREW_PREFIX/bin:$PATH
 
 # Load and initialise completion system
 autoload -Uz compinit
 compinit
 
 # Antidote
-source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
-antidote load ~/.config/zsh/bundles
+export ANTIDOTE_HOME=$XDG_CACHE_HOME/antidote
+if [[ ! -z $HOMEBREW_PREFIX ]]; then
+  source $HOMEBREW_PREFIX/opt/antidote/share/antidote/antidote.zsh
+else
+  source $ZSH/antidote/antidote.zsh
+fi
+
+# Use different location for plugins management
+zstyle ':antidote:bundle' file $ZSH/bundles.txt
+antidote load
 
 typeset -U path cdpath fpath manpath
 
@@ -61,7 +73,7 @@ eval "$(zoxide init zsh)"
 [[ -e $HOME/.config/op/plugins.sh ]] && source /Users/robin/.config/op/plugins.sh
 
 # Aliases
-alias -- s='sesh connect $(sesh list | fzf)'
+alias -- s='sesh connect $(sesh list -i | gum filter --limit 1 --no-sort --fuzzy --placeholder "Pick a sesh" --height 50 --prompt="⚡")'
 alias -- vi=nvim
 alias -- vim=nvim
 
@@ -85,9 +97,6 @@ bindkey -M viins '\es' sesh-sessions
 export LANG="en_US.UTF-8";
 export LC_CTYPE="en_US.UTF-8";
 export LC_ALL="en_US.UTF-8";
-export XDG_CONFIG_HOME="$HOME/.config";
-export XDG_DATA_HOME="$HOME/.local/share";
-export XDG_CACHE_HOME="$HOME/.cache";
 export EDITOR="nvim";
 export PAGER="less -FirSwX";
 export CLICOLOR=1;
@@ -98,13 +107,13 @@ HISTSIZE="10000"
 SAVEHIST="10000"
 
 HISTFILE="$HOME/.zsh_history"
-mkdir -p "$(dirname "$HISTFILE")"
 
 # Nodejs
 export PATH="/opt/homebrew/opt/node@20/bin:$PATH"
 
 # Go
 [[ -d /usr/local/go ]] && export PATH=$PATH:/usr/local/go/bin
+# Add location of installed Go application to PATH
 export PATH=$PATH:$HOME/go/bin
 
 # NOTE: When local zshrc file exists, source it!
