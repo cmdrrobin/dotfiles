@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 VERSION="1.24.1"
-MACH=$(uname -m)
+MARCH=$(uname -m)
 
 if [ $(uname) == "Linux" ]; then
     echo "Download and installing Go version $VERSION..."
-    curl -sLo /var/tmp/go${VERSION}.linux-${MACH}.tar.gz https://go.dev/dl/go${VERSION}.linux-${MACH}.tar.gz
-    sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf /var/tmp/go${VERSION}.linux-${MACH}.tar.gz
+    curl -sLo /var/tmp/go${VERSION}.linux-${MARCH}.tar.gz https://go.dev/dl/go${VERSION}.linux-${MARCH}.tar.gz
+    sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf /var/tmp/go${VERSION}.linux-${MARCH}.tar.gz
 fi
 
 # vi: ft=bash
