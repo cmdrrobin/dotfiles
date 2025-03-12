@@ -4,8 +4,9 @@ SCRIPT_DIR=${SCRIPT_DIR-"../"}
 
 source /etc/lsb-release
 
-if [ $(uname) == "Linux" ] && [ ${DISTRIB_ID,,} == "redhat" ]; then
-    echo "Running from ${SCRIPT_DIR}"
+if [ $(uname) == "Linux" ] && [ ${DISTRIB_ID,,} != "ubuntu" ]; then
+    # install required packages for RHEL/Fedora
+    cat $SCRIPT_DIR/packages.redhat.txt | xargs dnf install -y
 fi
 
 # vi: ft=bash
