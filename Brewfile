@@ -4,11 +4,13 @@ tap 'joshmedeski/sesh'
 brew 'antidote'
 brew 'bat'
 brew 'direnv'
+brew 'fd'
+brew 'fzf'
 brew 'gnupg'
 brew 'gopass'
 brew 'joshmedeski/sesh/sesh'
-brew 'koekeishiya/formulae/skhd'
 brew 'pinentry-mac'
+brew 'ripgrep'
 brew 'slides'
 brew 'starship'
 brew 'stow'
@@ -17,11 +19,8 @@ brew 'tmux'
 brew 'watch'
 brew 'zoxide'
 
-# Neovim related
-brew 'fd'
-brew 'fzf'
+# Editor stuff
 brew 'neovim'
-brew 'ripgrep'
 
 # Develop tools
 brew 'gh'
@@ -36,11 +35,9 @@ brew 'yq'
 # Apps
 cask '1password-cli'
 cask 'arc'
-cask 'discord'
-cask 'kitty'
+cask 'ghostty'
 cask 'obsidian'
 cask 'raycast'
-cask 'whisky'
 
 # Fonts
 cask 'font-jetbrains-mono'
