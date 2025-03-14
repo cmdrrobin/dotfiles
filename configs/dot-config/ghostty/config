@@ -11,8 +11,10 @@ font-family = Symbols Nerd Font Mono
 font-feature = calt
 
 font-size = 16
+font-thicken = true
+font-thicken-strength = 50
 
-font-style = SemiBold
+# font-style = SemiBold
 
 # Line height
 adjust-cell-height = 65%
@@ -30,8 +32,11 @@ window-padding-x = 8
 # Clipboard settings
 clipboard-read = allow
 clipboard-write = allow
+clipboard-trim-trailing-spaces = true
 
 copy-on-select = true
 
 # Allow option to work as alt on macos
 macos-option-as-alt = true
+
+link-url = true
