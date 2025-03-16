@@ -7,9 +7,6 @@ export XDG_CACHE_HOME="$HOME/.cache";
 # import Brew shell configurations and environment settings
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# Homebrew
-export PATH=$HOMEBREW_PREFIX/bin:$PATH
-
 # Load and initialise completion system
 autoload -Uz compinit
 compinit
