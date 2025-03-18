@@ -8,7 +8,7 @@ echo "     |/__\|/__\|/__\|/__\|/__\|/__\|/__\|/__\|"
 echo
 
 DRY=0
-SCRIPT_DIR=$(PWD)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 export SCRIPT_DIR
 
 log() {
