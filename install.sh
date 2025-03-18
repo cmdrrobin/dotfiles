@@ -8,7 +8,8 @@ echo "     |/__\|/__\|/__\|/__\|/__\|/__\|/__\|/__\|"
 echo
 
 DRY=0
-SCRIPT_DIR=$(PWD); export SCRIPT_DIR
+SCRIPT_DIR=$(PWD)
+export SCRIPT_DIR
 
 log() {
     if [[ $DRY == "1" ]]; then
@@ -29,11 +30,15 @@ done
 mkdir -p $HOME/code
 
 # collect all (executable) scripts
-RUNS_DIR=`find $SCRIPT_DIR/runs -mindepth 1 -maxdepth 1 -type f -perm +u+x | sort`
+RUNS_DIR=$(find $SCRIPT_DIR/runs -mindepth 1 -maxdepth 1 -type f -perm +u+x | sort)
 
 # Run each script
 for run in $RUNS_DIR; do
     log "Running script: $run"
 
-    [[ $DRY == "0" ]] && $run
+    if [ $DRY == "0" ]; then
+        $run
+    else
+        bash -n $run
+    fi
 done
