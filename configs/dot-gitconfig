@@ -32,7 +32,7 @@
 
 [alias]
     undo = reset HEAD~
-    cw = "!sh $HOME/.local/bin/clone-for-worktrees.sh"
+    cw = "!sh $HOME/.local/bin/git-clone-for-worktrees.sh"
 
 [include]
     path = ~/.gitconfig_local
