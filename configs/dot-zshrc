@@ -115,6 +115,6 @@ export PATH=$PATH:$HOME/go/bin
 
 # NOTE: When local zshrc file exists, source it!
 # This is used when some settings shouldn't be managed by git (or my dotfiles)
-[[ -e $HOME/.zshrc-local ]] && source $HOME/.zshrc-local
+[[ -e $HOME/.zshrc_local ]] && source $HOME/.zshrc_local
 
 # vim: ft=zsh
