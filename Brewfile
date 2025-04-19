@@ -1,10 +1,12 @@
 tap 'homebrew/cask-fonts'
 tap 'joshmedeski/sesh'
 tap 'hashicorp/tap'
+tap "jesseduffield/lazygit"
 
 brew 'antidote'
 brew 'bat'
 brew 'direnv'
+brew 'eza'
 brew 'fd'
 brew 'fzf'
 brew 'gnupg'
@@ -31,7 +33,7 @@ brew 'gh'
 brew 'git'
 brew 'glab'
 brew 'jq'
-brew 'lazygit'
+brew "jesseduffield/lazygit/lazygit"
 brew 'node'
 brew 'opentofu'
 brew 'poetry'
