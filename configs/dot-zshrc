@@ -70,7 +70,7 @@ eval "$(zoxide init zsh)"
 [[ -e $HOME/.config/op/plugins.sh ]] && source /Users/robin/.config/op/plugins.sh
 
 # Aliases
-alias -- s='sesh connect $(sesh list -i | gum filter --limit 1 --no-sort --fuzzy --placeholder "Pick a sesh" --height 50 --prompt="⚡")'
+alias -- s='sesh connect $($HOME/.local/bin/sesh_start)'
 alias -- vi=nvim
 alias -- vim=nvim
 
@@ -79,7 +79,7 @@ function sesh-sessions() {
     exec </dev/tty
     exec <&1
     local session
-    session=$(sesh list -t -c | fzf --height 40% --reverse --border-label ' sesh ' --border --prompt '⚡  ')
+    session=$($HOME/.local/bin/sesh_start)
     zle reset-prompt > /dev/null 2>&1 || true
     [[ -z "$session" ]] && return
     sesh connect $session
