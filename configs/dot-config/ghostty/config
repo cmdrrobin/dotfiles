@@ -34,7 +34,8 @@ clipboard-read = allow
 clipboard-write = allow
 clipboard-trim-trailing-spaces = true
 
-copy-on-select = true
+# NOTE: use clipboard rather than true, to copy selection to clipboard
+copy-on-select = clipboard
 
 # Allow option to work as alt on macos
 macos-option-as-alt = true

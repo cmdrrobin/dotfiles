@@ -105,6 +105,9 @@ SAVEHIST="10000"
 
 HISTFILE="$HOME/.zsh_history"
 
+# Neovim
+[[ -d /opt/neovim ]] && export PATH=/opt/neovim/bin:$PATH
+
 # Nodejs
 export PATH="/opt/homebrew/opt/node@20/bin:$PATH"
 
