@@ -4,8 +4,12 @@ export XDG_CONFIG_HOME="$HOME/.config";
 export XDG_DATA_HOME="$HOME/.local/share";
 export XDG_CACHE_HOME="$HOME/.cache";
 
+UNAME_SYSNAME=$(uname)
+
 # import Brew shell configurations and environment settings
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if [[ $UNAME_SYSNAME == "Darwin" ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # Load and initialise completion system
 autoload -Uz compinit
@@ -73,6 +77,8 @@ eval "$(zoxide init zsh)"
 alias -- s='sesh connect $($HOME/.local/bin/sesh_start)'
 alias -- vi=nvim
 alias -- vim=nvim
+alias -- ls=eza
+alias -- lt='eza --tree --git'
 
 # Sesh
 function sesh-sessions() {
@@ -97,9 +103,13 @@ export LC_ALL="en_US.UTF-8";
 export EDITOR="nvim";
 export PAGER="less -FirSwX";
 export CLICOLOR=1;
-export SSH_AUTH_SOCK="/Users/robin/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
+
+if [[ $UNAME_SYSNAME == "Darwin" ]]; then
+  export SSH_AUTH_SOCK="/Users/robin/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
+fi
 
 # History
+setopt HIST_IGNORE_ALL_DUPS
 HISTSIZE="10000"
 SAVEHIST="10000"
 
