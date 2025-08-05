@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
-VERSION="1.24.1"
+VERSION="1.24.5"
 MARCH=$(uname -m)
+
+if [ $MARCH == "x86_64" ]; then
+    MARCH="amd64"
+fi
 
 if [ $(uname) == "Linux" ]; then
     echo "Download and installing Go version $VERSION..."
