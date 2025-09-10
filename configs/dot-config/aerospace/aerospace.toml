@@ -131,5 +131,17 @@ if.app-id = 'com.1password.1password'
 run = "layout floating"
 
 [[on-window-detected]]
+if.app-id = 'com.todoist.mac.Todoist'
+run = "layout floating"
+
+[[on-window-detected]]
 if.app-name-regex-substring = 'finder'
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = 'com.apple.systempreferences'
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = 'com.obsbot.OBSBOT_Center'
 run = "layout floating"
