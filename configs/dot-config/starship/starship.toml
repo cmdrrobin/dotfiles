@@ -28,7 +28,7 @@ iris = '#c4a7e7'
 
 [character]
 error_symbol = "[✗](bold love)"
-success_symbol = "[❯](bold iris)"
+success_symbol = "[❯](bold foam)"
 vimcmd_symbol = "[\ue62b](green)" # 
 
 [directory]
