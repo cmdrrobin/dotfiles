@@ -13,7 +13,7 @@
 # disable new line
 add_newline = true
 
-format = "[$directory$git_branch$git_status]($style)$fill$container$terraform$kubernetes$python$go$line_break$character"
+format = "[$directory$git_branch$git_status]($style)$fill$container$terraform$kubernetes$python$golang$line_break$character"
 
 palette = "rose-pine"
 
@@ -27,7 +27,7 @@ foam = '#9ccfd8'
 iris = '#c4a7e7'
 
 [character]
-error_symbol = "[✗](bold love)"
+error_symbol = "[❯](bold love)"
 success_symbol = "[❯](bold foam)"
 vimcmd_symbol = "[\ue62b](green)" # 
 
