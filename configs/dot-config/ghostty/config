@@ -1,4 +1,4 @@
-theme = rose-pine
+theme = Rose Pine
 
 # Selection Colors
 selection-foreground = #191724
@@ -8,13 +8,12 @@ selection-background = #9ccfd8
 font-family = Monaspace Neon Var
 font-family = Symbols Nerd Font Mono
 
+# Allow font healing feature
 font-feature = calt
 
 font-size = 16
 font-thicken = true
 font-thicken-strength = 50
-
-# font-style = SemiBold
 
 # Line height
 adjust-cell-height = 65%
