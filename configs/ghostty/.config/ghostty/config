@@ -6,6 +6,10 @@ font-family = "CaskaydiaMono Nerd Font"
 font-style = Regular
 font-size = 11
 
+# Allow font healing feature
+font-feature = calt
+
+# Line height
 adjust-cell-height = 65%
 adjust-cursor-height = 65%
 adjust-underline-position = 15%
@@ -26,3 +30,14 @@ shell-integration-features = no-cursor
 keybind = f11=toggle_fullscreen
 keybind = shift+insert=paste_from_clipboard
 keybind = control+insert=copy_to_clipboard
+
+# Clipboard settings
+clipboard-read = allow
+clipboard-write = allow
+clipboard-trim-trailing-spaces = true
+
+# NOTE: use clipboard rather than true, to copy selection to clipboard
+copy-on-select = clipboard
+
+# show urls with curly
+link-url = true
