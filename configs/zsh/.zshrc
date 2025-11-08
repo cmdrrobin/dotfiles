@@ -6,11 +6,6 @@ export XDG_CACHE_HOME="$HOME/.cache";
 
 UNAME_SYSNAME=$(uname)
 
-# import Brew shell configurations and environment settings
-if [[ $UNAME_SYSNAME == "Darwin" ]]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
 # Load and initialise completion system
 autoload -Uz compinit
 compinit
@@ -64,14 +59,11 @@ export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
 # Starship prompt
-export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
+export STARSHIP_CONFIG=$HOME/.config/starship.toml
 eval "$(starship init zsh)"
 
 # Zoxide
 eval "$(zoxide init zsh)"
-
-# 1Password
-[[ -e $HOME/.config/op/plugins.sh ]] && source /Users/robin/.config/op/plugins.sh
 
 # Aliases
 alias -- s='sesh connect $($HOME/.local/bin/sesh_start)'
@@ -104,9 +96,7 @@ export EDITOR="nvim";
 export PAGER="less -FirSwX";
 export CLICOLOR=1;
 
-if [[ $UNAME_SYSNAME == "Darwin" ]]; then
-  export SSH_AUTH_SOCK="/Users/robin/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
-fi
+export SSH_AUTH_SOCK="$HOME/.1password/agent.sock";
 
 # History
 setopt HIST_IGNORE_ALL_DUPS
@@ -114,12 +104,6 @@ HISTSIZE="10000"
 SAVEHIST="10000"
 
 HISTFILE="$HOME/.zsh_history"
-
-# Neovim
-[[ -d /opt/neovim ]] && export PATH=/opt/neovim/bin:$PATH
-
-# Nodejs
-export PATH="/opt/homebrew/opt/node@20/bin:$PATH"
 
 # Go
 [[ -d /usr/local/go ]] && export PATH=$PATH:/usr/local/go/bin
@@ -132,5 +116,3 @@ export PATH=/Users/robin/.opencode/bin:$PATH
 # NOTE: When local zshrc file exists, source it!
 # This is used when some settings shouldn't be managed by git (or my dotfiles)
 [[ -e $HOME/.zshrc_local ]] && source $HOME/.zshrc_local
-
-# vim: ft=zsh
