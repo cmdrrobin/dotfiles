@@ -84,8 +84,6 @@ export EDITOR="nvim";
 export PAGER="less -FirSwX";
 export CLICOLOR=1;
 
-export SSH_AUTH_SOCK="$HOME/.1password/agent.sock";
-
 # History
 setopt HIST_IGNORE_ALL_DUPS
 HISTSIZE="10000"
