@@ -1,10 +1,14 @@
+# If not running interactively, don't do anything (leave this at the top of this file)
+[[ $- != *i* ]] && return
+
 # Basic variables
 export ZSH="$HOME/.config/zsh"
 export XDG_CONFIG_HOME="$HOME/.config";
 export XDG_DATA_HOME="$HOME/.local/share";
 export XDG_CACHE_HOME="$HOME/.cache";
 
-UNAME_SYSNAME=$(uname)
+# Load default Omarchy shell settings
+source $ZSH/omarchy/omarchy.zsh
 
 # Load and initialise completion system
 autoload -Uz compinit
@@ -12,11 +16,7 @@ compinit
 
 # Antidote
 export ANTIDOTE_HOME=$XDG_CACHE_HOME/antidote
-if [[ ! -z $HOMEBREW_PREFIX ]]; then
-  source $HOMEBREW_PREFIX/opt/antidote/share/antidote/antidote.zsh
-else
-  source $ZSH/antidote/antidote.zsh
-fi
+source $ZSH/antidote/antidote.zsh
 
 # Use different location for plugins management
 zstyle ':antidote:bundle' file $ZSH/bundles.txt
@@ -35,9 +35,6 @@ bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
-
-# Fuzzy Finder
-eval "$(fzf --zsh)"
 
 # Define FZF options and theme colouring
 local fzf_default_opts=(
@@ -58,19 +55,10 @@ export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
 # allow fzf-tab follow default opts
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
-# Starship prompt
-export STARSHIP_CONFIG=$HOME/.config/starship.toml
-eval "$(starship init zsh)"
-
-# Zoxide
-eval "$(zoxide init zsh)"
-
 # Aliases
 alias -- s='sesh connect $($HOME/.local/bin/sesh_start)'
 alias -- vi=nvim
 alias -- vim=nvim
-alias -- ls=eza
-alias -- lt='eza --tree --git'
 
 # Sesh
 function sesh-sessions() {
@@ -105,13 +93,8 @@ SAVEHIST="10000"
 
 HISTFILE="$HOME/.zsh_history"
 
-# Go
-[[ -d /usr/local/go ]] && export PATH=$PATH:/usr/local/go/bin
-# Add location of installed Go application to PATH
-export PATH=$PATH:$HOME/go/bin
-
 # opencode
-export PATH=/Users/robin/.opencode/bin:$PATH
+export PATH=/home/robin/.opencode/bin:$PATH
 
 # NOTE: When local zshrc file exists, source it!
 # This is used when some settings shouldn't be managed by git (or my dotfiles)
