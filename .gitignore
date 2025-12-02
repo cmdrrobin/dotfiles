@@ -1,4 +1,5 @@
 .DS_Store
 configs/zsh/.config/zsh/*
 !configs/zsh/.config/zsh/bundles.txt
+!configs/zsh/.config/zsh/omarchy
 configs/tmux/.config/tmux/plugins
