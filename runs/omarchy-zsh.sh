@@ -2,9 +2,8 @@
 
 set -e
 
-OMARCHY_VERSION=$(omarchy-version)
-
-if [ "$OMARCHY_VERSION" == "" ]; then
+# exit when system is not Omarchy
+if [ ! -v $OMARCHY_PATH ]; then
     exit
 fi
 
