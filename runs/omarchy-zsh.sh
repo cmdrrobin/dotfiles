@@ -3,7 +3,7 @@
 set -e
 
 # exit when system is not Omarchy
-if [ ! -v $OMARCHY_PATH ]; then
+if [ ! -n "$OMARCHY_PATH" ]; then
     exit
 fi
 
