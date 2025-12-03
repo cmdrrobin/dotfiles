@@ -4,7 +4,8 @@ set -e
 
 HYPRLAND_CONFIG="$HOME/.config/hypr/hyprland.conf"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-OVERRIDES_CONFIG="$SCRIPT_DIR/configs/hyprland-overrides.conf"
+SCRIPT_ROOT_DIR="$(basename $SCRIPT_DIR)"
+OVERRIDES_CONFIG="${SCRIPT_ROOT_DIR}/configs/hyprland-overrides.conf"
 SOURCE_LINE="source = $OVERRIDES_CONFIG"
 
 # Check if hyprland config exists
