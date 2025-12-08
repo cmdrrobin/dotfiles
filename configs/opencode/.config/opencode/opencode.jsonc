@@ -1,0 +1,32 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  // === Models ===
+  "model": "anthropic/claude-opus-4-5",
+  "small_model": "anthropic/claude-haiku-4-5", // title gen, lightweight tasks
+  "autoupdate": true,
+  "share": "disabled",
+  "permission": {
+    "bash": {
+      "sudo *": "deny",
+      "rm -rf /": "deny",
+      "rm -rf /*": "deny",
+      "rm -rf ~": "deny",
+      "rm -rf ~/*": "deny",
+      ":(){:|:&};:": "deny" // fork bomb, just in case
+    }
+  },
+  "mcp": {
+    // Snyk security scanning - deps, code, IaC, containers
+    "snyk": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "snyk@latest",
+        "mcp",
+        "-t",
+        "stdio"
+      ]
+    }
+  }
+}
