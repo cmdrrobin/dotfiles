@@ -1,7 +1,7 @@
 [general]
 destination = "$HOME/.config/hypr/monitors.conf"
-debounce_time_ms = 1500
-post_apply_exec = "hyprctl reload"
+# debounce_time_ms = 1500
+# post_apply_exec = "hyprctl reload"
 
 [profiles.dual_docked]
 config_file = "hyprconfigs/multi-opened.conf"
