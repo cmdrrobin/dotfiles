@@ -1,5 +1,5 @@
 [general]
-destination = "$HOME/.config/hypr/monitors.conf"
+destination = "$HOME/.config/hypr/dynamicmonitors.conf"
 # debounce_time_ms = 1500
 # post_apply_exec = "hyprctl reload"
 
