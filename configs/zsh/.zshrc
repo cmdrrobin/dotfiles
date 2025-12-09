@@ -62,13 +62,13 @@ alias -- vim=nvim
 
 # Sesh
 function sesh-sessions() {
-    exec </dev/tty
-    exec <&1
-    local session
-    session=$($HOME/.local/bin/sesh_start)
-    zle reset-prompt > /dev/null 2>&1 || true
-    [[ -z "$session" ]] && return
-    sesh connect $session
+  exec </dev/tty
+  exec <&1
+  local session
+  session=$(sesh list -t -c | fzf --height 40% --reverse --border-label ' sesh ' --border --prompt '⚡  ')
+  zle reset-prompt > /dev/null 2>&1 || true
+  [[ -z "$session" ]] && return
+  sesh connect $session
 }
 
 zle     -N             sesh-sessions
@@ -97,3 +97,5 @@ export PATH=/home/robin/.opencode/bin:$PATH
 # NOTE: When local zshrc file exists, source it!
 # This is used when some settings shouldn't be managed by git (or my dotfiles)
 [[ -e $HOME/.zshrc_local ]] && source $HOME/.zshrc_local
+
+. "$HOME/.local/share/../bin/env"
