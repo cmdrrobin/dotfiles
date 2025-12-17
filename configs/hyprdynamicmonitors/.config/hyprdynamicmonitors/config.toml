@@ -3,38 +3,6 @@ destination = "$HOME/.config/hypr/dynamicmonitors.conf"
 # debounce_time_ms = 1500
 # post_apply_exec = "hyprctl reload"
 
-[profiles.dual_docked]
-config_file = "hyprconfigs/multi-opened.conf"
-config_file_type = "static"
-
-[profiles.dual_docked.conditions]
-power_state = "AC"      # optional: "AC" or "BAT" (requires --disable-power-events=false)
-lid_state = "Opened"    # optional: "Opened" or "Closed" (requires --enable-lid-events)
-
-[[profiles.dual_docked.conditions.required_monitors]]
-description = "BOE 0x0BCA"
-monitor_tag = "laptop"
-
-[[profiles.dual_docked.conditions.required_monitors]]
-description = "LG Electronics LG ULTRAFINE 408NTSU0W574"
-monitor_tag = "monitor1"
-
-[profiles.single_docked]
-config_file = "hyprconfigs/multi-closed.conf"
-config_file_type = "static"
-
-[profiles.single_docked.conditions]
-power_state = "AC"      # optional: "AC" or "BAT" (requires --disable-power-events=false)
-lid_state = "Closed"    # optional: "Opened" or "Closed" (requires --enable-lid-events)
-
-[[profiles.single_docked.conditions.required_monitors]]
-description = "BOE 0x0BCA"
-monitor_tag = "laptop"
-
-[[profiles.single_docked.conditions.required_monitors]]
-description = "LG Electronics LG ULTRAFINE 408NTSU0W574"
-monitor_tag = "monitor1"
-
 # The service will add the following default values, you can check if they match your system with:
 # 1) For the query:
 # $ gdbus call --system --dest org.freedesktop.UPower --object-path /org/freedesktop/UPower --method org.freedesktop.DBus.Properties.Get org.freedesktop.UPower LidIsClosed
@@ -80,6 +48,7 @@ body = "LidIsClosed"
 [profiles.lid_closed]
 config_file = "hyprconfigs/laptop-closed.conf"
 config_file_type = "static"
+post_apply_exec = "notify-send 'Switched to closed profile'"
 
 [profiles.lid_closed.conditions]
 lid_state = "Closed"
@@ -91,14 +60,10 @@ name = "eDP-1"
 [profiles.lid_opened]
 config_file = "hyprconfigs/laptop-opened.conf"
 config_file_type = "static"
+post_apply_exec = "notify-send 'Switched to opened profile'"
 
 [profiles.lid_opened.conditions]
 lid_state = "Opened"
 
 [[profiles.lid_opened.conditions.required_monitors]]
 name = "eDP-1"
-
-[fallback_profile]
-config_file = "hyprconfigs/fallback.conf"
-config_file_type = "static"
-post_apply_exec = "notify-send 'Switched to default profile'"
