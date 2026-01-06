@@ -10,9 +10,10 @@ export XDG_CACHE_HOME="$HOME/.cache";
 # Load default Omarchy shell settings
 source $ZSH/omarchy/omarchy.zsh
 
+# Add custom completions directory to fpath
+fpath=(~/.config/zsh/completions $fpath)
 # Load and initialise completion system
-autoload -Uz compinit
-compinit
+autoload -U compinit && compinit
 
 # Antidote
 export ANTIDOTE_HOME=$XDG_CACHE_HOME/antidote
