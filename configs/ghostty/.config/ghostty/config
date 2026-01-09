@@ -1,5 +1,7 @@
 # Dynamic theme colors
-config-file = ?"~/.config/omarchy/current/theme/ghostty.conf"
+# config-file = ?"~/.config/omarchy/current/theme/ghostty.conf"
+
+theme = Rose Pine
 
 # Font
 font-family = "CaskaydiaMono Nerd Font"
