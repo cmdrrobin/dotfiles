@@ -2,16 +2,15 @@
 function ga() {
   if [[ -z "$1" ]]; then
     echo "Usage: ga [branch name]"
-    exit 1
+  else
+    local branch="$1"
+    local base="$(basename "$PWD")"
+    local path="../${base}--${branch}"
+
+    git worktree add -b "$branch" "$path"
+    mise trust "$path"
+    cd "$path"
   fi
-
-  local branch="$1"
-  local base="$(basename "$PWD")"
-  local path="../${base}--${branch}"
-
-  git worktree add -b "$branch" "$path"
-  mise trust "$path"
-  cd "$path"
 }
 
 # Remove worktree and branch from within active worktree directory.
