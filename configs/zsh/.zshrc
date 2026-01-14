@@ -8,7 +8,7 @@ export XDG_DATA_HOME="$HOME/.local/share";
 export XDG_CACHE_HOME="$HOME/.cache";
 
 # Load default Omarchy shell settings
-source $ZSH/omarchy/omarchy.zsh
+source ${ZSH}/omarchy/omarchy.zsh
 
 # Add custom completions directory to fpath
 fpath=(~/.config/zsh/completions $fpath)
@@ -17,11 +17,16 @@ autoload -U compinit && compinit
 
 # Antidote
 export ANTIDOTE_HOME=$XDG_CACHE_HOME/antidote
-source $ZSH/antidote/antidote.zsh
-
-# Use different location for plugins management
-zstyle ':antidote:bundle' file $ZSH/bundles.txt
-antidote load
+# Lazy-load antidote and generate the static load file only when needed
+zsh_plugins=${ZDOTDIR:-$HOME}/.zsh_plugins
+if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins}.txt ]]; then
+  (
+    cp ${ZSH}/bundles.txt ${zsh_plugins}.txt
+    source ${ZSH}/antidote/antidote.zsh
+    antidote bundle <${zsh_plugins}.txt >${zsh_plugins}.zsh
+  )
+fi
+source ${zsh_plugins}.zsh
 
 typeset -U path cdpath fpath manpath
 
