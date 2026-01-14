@@ -2,4 +2,5 @@
 configs/zsh/.config/zsh/*
 !configs/zsh/.config/zsh/bundles.txt
 !configs/zsh/.config/zsh/omarchy
+!configs/zsh/.config/zsh/functions
 configs/tmux/.config/tmux/plugins

@@ -66,25 +66,9 @@ alias -- s='sesh connect $($HOME/.local/bin/sesh_start)'
 alias -- vi=nvim
 alias -- vim=nvim
 
-# Sesh
-function sesh-sessions() {
-  exec </dev/tty
-  exec <&1
-  local session
-  session=$(sesh list -t -c | fzf --height 40% --reverse --border-label ' sesh ' --border --prompt '⚡  ')
-  zle reset-prompt > /dev/null 2>&1 || true
-  [[ -z "$session" ]] && return
-  sesh connect $session
-}
-
-zle     -N             sesh-sessions
-bindkey -M emacs '\es' sesh-sessions
-bindkey -M vicmd '\es' sesh-sessions
-bindkey -M viins '\es' sesh-sessions
-
-function power() {
-  upower -i /org/freedesktop/UPower/devices/battery_BAT1 |grep 'time to empty'|awk '{print $4, $5}'
-}
+for f in ${ZSH}/functions/*.zsh; do
+  source $f
+done
 
 # Variables
 export LANG="en_US.UTF-8";
