@@ -27,6 +27,14 @@
         "-t",
         "stdio"
       ]
+    },
+    "home-assistant": {
+      "type": "remote",
+      "url": "https://tuus.grtrs.nl/api/mcp",
+      "headers": {
+        "Authorization": "Bearer {env:HA_TOKEN}"
+      },
+      "enabled": true
     }
   }
 }
