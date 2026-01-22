@@ -55,6 +55,7 @@
   ci = commit
   st = status
   undo = reset HEAD~
+  cm = commit -m
 
 [include]
   path = ~/.gitconfig_local
