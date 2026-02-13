@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# Get the disabled status of eDP-1 monitor
+INTERNAL_MON_DISABLED=$(hyprctl monitors all -j | jq -r '.[] | select(.name=="eDP-1") | .disabled')
+
+# Check if monitor was found
+if [[ -z "$INTERNAL_MON_DISABLED" ]]; then
+    notify-send -u critical "Monitor Toggle" "Error: eDP-1 not found"
+    exit 1
+fi
+
+# Toggle monitor based on current state
+if [[ "$INTERNAL_MON_DISABLED" == "true" ]]; then
+    # Monitor is disabled, enable it at position 0x0
+    hyprctl keyword monitor "eDP-1,preferred,0x0,1.6"
+    notify-send -t 2000 "Monitor Toggle" "Internal monitor enabled"
+else
+    # Monitor is enabled, disable it
+    hyprctl keyword monitor "eDP-1,disable"
+    notify-send -t 2000 "Monitor Toggle" "Internal monitor disabled"
+fi
