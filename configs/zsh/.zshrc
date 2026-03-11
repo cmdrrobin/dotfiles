@@ -7,6 +7,8 @@ export XDG_CONFIG_HOME="$HOME/.config";
 export XDG_DATA_HOME="$HOME/.local/share";
 export XDG_CACHE_HOME="$HOME/.cache";
 
+export PATH=$HOME/.local/bin:$PATH
+
 # Load default Omarchy shell settings
 source ${ZSH}/omarchy/omarchy.zsh
 
@@ -62,7 +64,7 @@ export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
 # Aliases
-alias -- s='sesh connect $($HOME/.local/bin/sesh_start)'
+alias -- s='sesh_start'
 alias -- vi=nvim
 alias -- vim=nvim
 
@@ -87,6 +89,9 @@ HISTFILE="$HOME/.zsh_history"
 
 # opencode
 export PATH=/home/robin/.opencode/bin:$PATH
+
+# Rust (cargo)
+export PATH=$HOME/.cargo/bin:$PATH
 
 # NOTE: When local zshrc file exists, source it!
 # This is used when some settings shouldn't be managed by git (or my dotfiles)
