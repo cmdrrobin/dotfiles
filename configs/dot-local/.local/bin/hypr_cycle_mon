@@ -2,22 +2,23 @@
 
 set -euo pipefail
 
-# Get the disabled status of eDP-1 monitor
-INTERNAL_MON_DISABLED=$(hyprctl monitors all -j | jq -r '.[] | select(.name=="eDP-1") | .disabled')
+# Toggle the internal laptop display on/off.
+# Useful when connected to an external monitor and you want to close the lid
+# or just use the external display only.
 
-# Check if monitor was found
-if [[ -z "$INTERNAL_MON_DISABLED" ]]; then
-    notify-send -u critical "Monitor Toggle" "Error: eDP-1 not found"
-    exit 1
+INTERNAL=$(hyprctl monitors all -j | jq -r '.[] | select(.name | startswith("eDP")) | .name')
+
+if [[ -z $INTERNAL ]]; then
+  notify-send -u low "󰍹    No internal display found"
+  exit 1
 fi
 
-# Toggle monitor based on current state
-if [[ "$INTERNAL_MON_DISABLED" == "true" ]]; then
-    # Monitor is disabled, enable it at position 0x0
-    hyprctl keyword monitor "eDP-1,preferred,0x0,1.6"
-    notify-send -t 2000 "Monitor Toggle" "Internal monitor enabled"
+DISABLED=$(hyprctl monitors all -j | jq -r --arg m "$INTERNAL" '.[] | select(.name == $m) | .disabled')
+
+if [[ $DISABLED == "true" ]]; then
+  hyprctl keyword monitor "$INTERNAL,preferred,auto,auto"
+  notify-send -u low "󰍹    Internal display on"
 else
-    # Monitor is enabled, disable it
-    hyprctl keyword monitor "eDP-1,disable"
-    notify-send -t 2000 "Monitor Toggle" "Internal monitor disabled"
+  hyprctl keyword monitor "$INTERNAL,disable"
+  notify-send -u low "󰍹    Internal display off"
 fi
